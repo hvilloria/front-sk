@@ -1,14 +1,14 @@
 import React from 'react';
 import './App.css';
 import Header from './components/Header/Header';
-import FormOrder from './components/FormOrder/FormOrder';
+import OrderWrapper from "./components/OrderWrapper/OrderWrapper";
 
 function App() {
   return (
-    <div className="app-container">
+    <React.Fragment>
       <Header />
-      <FormOrder/>
-    </div>
+      <OrderWrapper/>
+    </React.Fragment>
   );
 }
 

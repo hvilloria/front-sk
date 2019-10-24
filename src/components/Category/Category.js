@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import { Nav } from 'react-bootstrap';
 
 class Category extends Component {
   constructor(props) {
@@ -17,7 +18,13 @@ class Category extends Component {
   render() {
     return (
       <Fragment>
-        <li onClick={this.handleClick}>Category: {this.props.name}</li>
+        <Nav.Item
+          onClick={this.handleClick}
+          action="true"
+        >
+          <Nav.Link>{this.props.name}</Nav.Link>
+
+        </Nav.Item>
       </Fragment>
     )
   }

@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import Category from "../Category/Category";
 import ProductList from "../ProductList/ProductList";
+import { Nav } from 'react-bootstrap';
 
 class CategoryList extends Component {
   constructor(props) {
@@ -32,9 +33,10 @@ class CategoryList extends Component {
   render() {
     return (
       <Fragment>
-        <div style={ {display: 'flex', justifyContent: 'space-around'}}>
+        <h3>Categorias</h3>
+        <Nav justify variant="tabs">
           { this.renderCategories() }
-        </div>
+        </Nav>
         <div>
           <ProductList
             products={this.state.products}

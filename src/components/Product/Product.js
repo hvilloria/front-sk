@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { ListGroup } from 'react-bootstrap';
 
 class Product extends Component {
   constructor(props) {
@@ -8,16 +9,16 @@ class Product extends Component {
   }
 
   handleCLick() {
-    this.props.handleProductSelected(this.props.id);
+    this.props.handleProductSelected(this.props);
   }
 
   render() {
     return (
-      <div>
-        <span
-          onClick={this.handleCLick}
-        >{this.props.name}</span>
-      </div>
+      <ListGroup.Item
+      onClick={this.handleCLick}
+      >
+        {this.props.name}
+      </ListGroup.Item>
     )
   }
 }

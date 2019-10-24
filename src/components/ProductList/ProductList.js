@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Product from "../Product/Product";
+import { ListGroup } from 'react-bootstrap';
 class ProductList extends Component {
 
   products() {
@@ -19,9 +20,9 @@ class ProductList extends Component {
 
   render() {
     return (
-      <div>
-        { this.products() || <h1>No hay productos</h1> }
-      </div>
+      <ListGroup>
+        {this.products() || <h3> No hay productos Seleccionados</h3>}
+      </ListGroup>
     )
   }
 }
