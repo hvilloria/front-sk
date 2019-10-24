@@ -5,6 +5,7 @@ class SummaryOrder extends Component {
   constructor(props) {
     super(props);
     this.ProductSummaryList = this.ProductSummaryList.bind(this);
+    this.serviceType = this.serviceType.bind(this);
   }
 
   ProductSummaryList() {
@@ -17,6 +18,12 @@ class SummaryOrder extends Component {
     }
   }
 
+  serviceType() {
+    const { serviceType } = this.props;
+    if (serviceType === 'tk') {
+       return 'Take Away'
+     }
+  }
 
   // handleSubmit(event) {
   //   event.preventDefault();
@@ -39,7 +46,7 @@ class SummaryOrder extends Component {
             Numero de telefono: {this.props.clientPhoneNumber}
           </Card.Text>
           <Card.Text>
-            Tipo de Retiro: {this.props.serviceType}
+            Tipo de Retiro: {this.serviceType()}
           </Card.Text>
           <Card.Text>
             Tipo de Pago: {this.props.paymentType}
