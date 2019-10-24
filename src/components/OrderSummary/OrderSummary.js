@@ -22,16 +22,12 @@ class SummaryOrder extends Component {
     const { serviceType } = this.props;
     if (serviceType === 'tk') {
        return 'Take Away'
-     }
+    } else if (serviceType === 'dl') {
+      return 'Delivery Local'
+    } else {
+      return 'Pedidos Ya'
+    }
   }
-
-  // handleSubmit(event) {
-  //   event.preventDefault();
-  //   const order = this.state;
-  //   axios.post('http://localhost:3001//api/orders', {
-  //     order
-  //   }).then(() => { }).catch((err) => { console.log(err) });
-  // }
 
   render() {
     return (
@@ -40,16 +36,16 @@ class SummaryOrder extends Component {
           <Card.Title style={{textAlign: 'center'}}>Comanda</Card.Title>
           <hr/>
           <Card.Text>
-            nombre de cliente: {this.props.clientName}
+            nombre de cliente: { this.props.clientName }
           </Card.Text>
           <Card.Text>
-            Numero de telefono: {this.props.clientPhoneNumber}
+            Numero de telefono: { this.props.clientPhoneNumber }
           </Card.Text>
           <Card.Text>
-            Tipo de Retiro: {this.serviceType()}
+            Tipo de Retiro: { this.serviceType() }
           </Card.Text>
           <Card.Text>
-            Tipo de Pago: {this.props.paymentType}
+            Tipo de Pago: { this.props.paymentType }
           </Card.Text>
           <Card.Text>
             Productos: { this.ProductSummaryList() }
