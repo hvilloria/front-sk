@@ -53,9 +53,6 @@ class FormOrder extends Component {
             </Form.Group>
           </Form.Row>
         </Form>
-        <CategoryList
-          categories={this.props.categories}
-          handleProductSelected={this.props.handleProductSelected} />
       </div>
 
     )

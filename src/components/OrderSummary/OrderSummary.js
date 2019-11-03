@@ -11,7 +11,7 @@ class SummaryOrder extends Component {
   ProductSummaryList() {
     if (this.props.products.length) {
       return this.props.products.map((product, i) => {
-        return <li key={i}>{product.name}</li>
+        return <li key={i}>{product.name} {product.variant.name} {product.variant.price}</li>
       })
     } else {
       return <span>sin productos</span>
@@ -52,7 +52,7 @@ class SummaryOrder extends Component {
           </Card.Text>
           <hr />
           <Card.Text>
-            Total: {this.props.total}
+            Total: {this.props.total.toFixed(2)}
           </Card.Text>
         </Card.Body>
       </Card>

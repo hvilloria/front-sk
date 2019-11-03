@@ -40,7 +40,7 @@ class CategoryList extends Component {
         <div>
           <ProductList
             products={this.state.products}
-            handleProductSelected={this.props.handleProductSelected}
+            handleVariantSelected={this.props.handleVariantSelected}
           />
         </div>
       </Fragment>
