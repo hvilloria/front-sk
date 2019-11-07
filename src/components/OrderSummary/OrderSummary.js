@@ -6,6 +6,7 @@ class SummaryOrder extends Component {
     super(props);
     this.ProductSummaryList = this.ProductSummaryList.bind(this);
     this.serviceType = this.serviceType.bind(this);
+    this.paymentType = this.paymentType.bind(this);
   }
 
   ProductSummaryList() {
@@ -15,6 +16,13 @@ class SummaryOrder extends Component {
       })
     } else {
       return <span>sin productos</span>
+    }
+  }
+
+  paymentType() {
+    const { paymentType } = this.props;
+    if (paymentType === 'cash') {
+       return 'Efectivo'
     }
   }
 
@@ -45,7 +53,7 @@ class SummaryOrder extends Component {
             Tipo de Retiro: { this.serviceType() }
           </Card.Text>
           <Card.Text>
-            Tipo de Pago: { this.props.paymentType }
+            Tipo de Pago: { this.paymentType() }
           </Card.Text>
           <Card.Text>
             Productos: { this.ProductSummaryList() }
