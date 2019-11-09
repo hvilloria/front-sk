@@ -1,4 +1,8 @@
 import React, { Component } from "react";
+import {
+  Redirect,
+  withRouter
+} from "react-router-dom";
 import { Card, Button, Modal } from 'react-bootstrap';
 const axios = require('axios');
 
@@ -58,7 +62,7 @@ class SummaryOrder extends Component {
       }
     }) // TODO: redireccionar a listado de ordenes si es creada, a pantalla de error y falla.
     .then(response => {
-      console.log(response.data);
+      this.props.history.push('/');
     }).catch((err)=> alert(err))
   }
 
@@ -119,4 +123,4 @@ class SummaryOrder extends Component {
 }
 
 
-export default SummaryOrder;
+export default withRouter(SummaryOrder);
