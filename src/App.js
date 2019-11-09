@@ -1,14 +1,27 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
 import './App.css';
 import Header from './components/Header/Header';
 import OrderWrapper from "./components/OrderWrapper/OrderWrapper";
+import OrderList from "./components/OrderList/OrderList";
 
 function App() {
   return (
-    <React.Fragment>
-      <Header />
-      <OrderWrapper/>
-    </React.Fragment>
+    <Router>
+      <Header/>
+      <Switch>
+        <Route path='/orders'>
+          <OrderWrapper/>
+        </Route>
+        <Route exact path='/'>
+          <OrderList/>
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
