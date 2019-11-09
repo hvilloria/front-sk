@@ -10,13 +10,15 @@ class SummaryOrder extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showModal: false
+      showModal: false,
+      exchange: 0
     }
     this.handleClick = this.handleClick.bind(this);
     this.ProductSummaryList = this.ProductSummaryList.bind(this);
     this.serviceType = this.serviceType.bind(this);
     this.paymentType = this.paymentType.bind(this);
     this.submitOrder = this.submitOrder.bind(this);
+    this.handleChange = this.handleChange.bind(this);
 
   }
 
@@ -60,7 +62,7 @@ class SummaryOrder extends Component {
         variant_ids,
         total: total.toFixed(2)
       }
-    }) // TODO: redireccionar a listado de ordenes si es creada, a pantalla de error y falla.
+    })
     .then(response => {
       this.props.history.push('/');
     }).catch((err)=> alert(err))
@@ -75,6 +77,12 @@ class SummaryOrder extends Component {
     } else {
       return 'Pedidos Ya'
     }
+  }
+
+  handleChange(event) {
+    const payment = event.target.value
+    const total = this.props.total;
+    this.setState({exchange: (payment - total).toFixed(2)})
   }
 
   render() {
@@ -101,6 +109,13 @@ class SummaryOrder extends Component {
           <hr />
           <Card.Text>
             Total: {this.props.total.toFixed(2)}
+          </Card.Text>
+          <Card.Text>
+            Paga Con:
+            <input type="text" className="form-control" onChange={this.handleChange}/>
+          </Card.Text>
+          <Card.Text>
+            Cambio: {this.state.exchange}
           </Card.Text>
           <Button onClick={this.handleClick} variant="light" size="lg" block>
             Crear orden
