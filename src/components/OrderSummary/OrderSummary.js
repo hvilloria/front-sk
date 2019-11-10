@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import {
-  Redirect,
   withRouter
 } from "react-router-dom";
 import { Card, Button, Modal } from 'react-bootstrap';
+import RemovableProduct from "../RemovableProduct/RemovableProduct";
 const axios = require('axios');
 
 class SummaryOrder extends Component {
@@ -11,9 +11,10 @@ class SummaryOrder extends Component {
     super(props);
     this.state = {
       showModal: false,
-      exchange: 0
+      exchange: 0,
+      products: this.props.products
     }
-    this.handleClick = this.handleClick.bind(this);
+    this.handleClickModal = this.handleClickModal.bind(this);
     this.ProductSummaryList = this.ProductSummaryList.bind(this);
     this.serviceType = this.serviceType.bind(this);
     this.paymentType = this.paymentType.bind(this);
@@ -25,7 +26,14 @@ class SummaryOrder extends Component {
   ProductSummaryList() {
     if (this.props.products.length) {
       return this.props.products.map((product, i) => {
-        return <li key={i}>{product.name} {product.variant.name} {product.variant.price}</li>
+        return (
+          <RemovableProduct
+            key={i}
+            {...product}
+            handleProductRemover={this.props.handleProductRemover}
+            indexOfProduct={i}
+          />
+        )
       })
     } else {
       return <span>sin productos</span>
@@ -39,10 +47,9 @@ class SummaryOrder extends Component {
     }
   }
 
-  handleClick() {
+  handleClickModal() {
     this.setState((state)=>({showModal: !state.showModal}))
   }
-
 
   submitOrder() {
     const variant_ids = this.props.products.map((product)=> product.variant.id)
@@ -117,13 +124,13 @@ class SummaryOrder extends Component {
           <Card.Text>
             Cambio: {this.state.exchange}
           </Card.Text>
-          <Button onClick={this.handleClick} variant="light" size="lg" block>
+          <Button onClick={this.handleClickModal} variant="light" size="lg" block>
             Crear orden
           </Button>
           <Modal show={this.state.showModal} size="sm" centered>
               <Modal.Body>Estas seguro de crear esta orden?</Modal.Body>
               <Modal.Footer>
-                <Button variant="danger" onClick={this.handleClick}>
+                <Button variant="danger" onClick={this.handleClickModal}>
                   Cancelar
                 </Button>
                 <Button variant="light" onClick={this.submitOrder}>
@@ -136,6 +143,5 @@ class SummaryOrder extends Component {
     )
   }
 }
-
 
 export default withRouter(SummaryOrder);
