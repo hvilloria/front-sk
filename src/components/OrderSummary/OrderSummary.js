@@ -1,29 +1,39 @@
 import React, { Component } from "react";
 import {
-  Redirect,
   withRouter
 } from "react-router-dom";
 import { Card, Button, Modal } from 'react-bootstrap';
+import RemovableProduct from "../RemovableProduct/RemovableProduct";
 const axios = require('axios');
 
 class SummaryOrder extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showModal: false
+      showModal: false,
+      exchange: 0,
+      products: this.props.products
     }
-    this.handleClick = this.handleClick.bind(this);
+    this.handleClickModal = this.handleClickModal.bind(this);
     this.ProductSummaryList = this.ProductSummaryList.bind(this);
     this.serviceType = this.serviceType.bind(this);
     this.paymentType = this.paymentType.bind(this);
     this.submitOrder = this.submitOrder.bind(this);
+    this.handleChange = this.handleChange.bind(this);
 
   }
 
   ProductSummaryList() {
     if (this.props.products.length) {
       return this.props.products.map((product, i) => {
-        return <li key={i}>{product.name} {product.variant.name} {product.variant.price}</li>
+        return (
+          <RemovableProduct
+            key={i}
+            {...product}
+            handleProductRemover={this.props.handleProductRemover}
+            indexOfProduct={i}
+          />
+        )
       })
     } else {
       return <span>sin productos</span>
@@ -37,10 +47,9 @@ class SummaryOrder extends Component {
     }
   }
 
-  handleClick() {
+  handleClickModal() {
     this.setState((state)=>({showModal: !state.showModal}))
   }
-
 
   submitOrder() {
     const variant_ids = this.props.products.map((product)=> product.variant.id)
@@ -60,7 +69,7 @@ class SummaryOrder extends Component {
         variant_ids,
         total: total.toFixed(2)
       }
-    }) // TODO: redireccionar a listado de ordenes si es creada, a pantalla de error y falla.
+    })
     .then(response => {
       this.props.history.push('/');
     }).catch((err)=> alert(err))
@@ -75,6 +84,12 @@ class SummaryOrder extends Component {
     } else {
       return 'Pedidos Ya'
     }
+  }
+
+  handleChange(event) {
+    const payment = event.target.value
+    const total = this.props.total;
+    this.setState({exchange: (payment - total).toFixed(2)})
   }
 
   render() {
@@ -102,13 +117,20 @@ class SummaryOrder extends Component {
           <Card.Text>
             Total: {this.props.total.toFixed(2)}
           </Card.Text>
-          <Button onClick={this.handleClick} variant="light" size="lg" block>
+          <Card.Text>
+            Paga Con:
+            <input type="text" className="form-control" onChange={this.handleChange}/>
+          </Card.Text>
+          <Card.Text>
+            Cambio: {this.state.exchange}
+          </Card.Text>
+          <Button onClick={this.handleClickModal} variant="light" size="lg" block>
             Crear orden
           </Button>
           <Modal show={this.state.showModal} size="sm" centered>
               <Modal.Body>Estas seguro de crear esta orden?</Modal.Body>
               <Modal.Footer>
-                <Button variant="danger" onClick={this.handleClick}>
+                <Button variant="danger" onClick={this.handleClickModal}>
                   Cancelar
                 </Button>
                 <Button variant="light" onClick={this.submitOrder}>
@@ -121,6 +143,5 @@ class SummaryOrder extends Component {
     )
   }
 }
-
 
 export default withRouter(SummaryOrder);

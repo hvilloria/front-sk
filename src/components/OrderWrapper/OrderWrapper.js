@@ -23,6 +23,7 @@ class OrderWrapper extends Component {
     this.handlePaymentTypeChange = this.handlePaymentTypeChange.bind(this);
     this.handleTotalChange = this.handleTotalChange.bind(this);
     this.handleVariantSelected = this.handleVariantSelected.bind(this);
+    this.handleProductRemover = this.handleProductRemover.bind(this);
   }
 
   componentDidMount() {
@@ -50,6 +51,23 @@ class OrderWrapper extends Component {
 
   handleTotalChange(event) {
     this.setState({total: event.target.value})
+  }
+
+  handleProductRemover(indexOfProduct) {
+    let products = this.state.products;
+    const remainingProducts = products.filter((_product,i) => {
+      return indexOfProduct !== i;
+    })
+    if (remainingProducts.length) {
+      const remainingTotal = remainingProducts.map((product) => {
+        return product.variant.price;
+      }).reduce((acum, price) => {
+        return acum + price;
+      })
+      this.setState({products: remainingProducts, total: remainingTotal})
+    } else {
+      this.setState({ products: remainingProducts, total: 0 });
+    }
   }
 
   handleVariantSelected(product, variant) {
@@ -98,6 +116,7 @@ class OrderWrapper extends Component {
               paymentType={this.state.paymentType}
               total={this.state.total}
               products={this.state.products}
+              handleProductRemover={this.handleProductRemover}
             />
           </Col>
         </Row>
