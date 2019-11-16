@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import Order from "../Order/Order";
 import OrderDetail from "../OrderDetail/OrderDetail";
-import { Table, Container } from 'react-bootstrap';
+import { Table } from 'react-bootstrap';
 import styled from 'styled-components'
 const axios = require('axios');
 
