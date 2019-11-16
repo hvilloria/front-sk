@@ -1,9 +1,9 @@
 import React, { Component } from "react";
+import RemovableProduct from "../RemovableProduct/RemovableProduct";
 import {
   withRouter
 } from "react-router-dom";
 import { Card, Button, Modal } from 'react-bootstrap';
-import RemovableProduct from "../RemovableProduct/RemovableProduct";
 const axios = require('axios');
 
 class SummaryOrder extends Component {
