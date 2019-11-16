@@ -1,10 +1,25 @@
 import React, { Component } from "react";
-import CategoryList from '../CategoryList/CategoryList';
 import { Col, Form } from 'react-bootstrap';
 
 class FormOrder extends Component {
 
-  render(){
+  render() {
+    const disableTrackingId = () => {
+      if (this.props.serviceType !== "py") {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    const disableAddress = () => {
+      if (this.props.serviceType !== "dl") {
+        return true;
+      } else {
+        return false;
+      }
+     }
+
     return (
       <div>
         <Form>
@@ -50,6 +65,40 @@ class FormOrder extends Component {
               >
                 <option value="cash">Efectivo</option>
               </Form.Control>
+            </Form.Group>
+          </Form.Row>
+          <Form.Row>
+            <Form.Group as={Col} controlId="trackingId">
+              <Form.Label>Identificador de pedido</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Identificador de pedido"
+                disabled={disableTrackingId()}
+                onChange={this.props.handleTrackingIdChange}
+                value={this.props.trackingId}
+              />
+            </Form.Group>
+            {/* // TODO: una vez implementado en el back los parametros, descomentar esto. */}
+            {/* <Form.Group as={Col} controlId="address">
+              <Form.Label>Dirección</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Dirección"
+                disabled={disableAddress()}
+                onChange={this.props.handleAddressChange}
+                value={this.props.address}
+              />
+            </Form.Group> */}
+          </Form.Row>
+          <Form.Row>
+            <Form.Group as={Col} controlId="Notes">
+              <Form.Label>Notas</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Notas"
+                onChange={this.props.handleNotesChange}
+                value={this.props.notes}
+              />
             </Form.Group>
           </Form.Row>
         </Form>
