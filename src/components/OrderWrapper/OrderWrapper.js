@@ -33,7 +33,7 @@ class OrderWrapper extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:3000/api/categories')
+    axios.get(`${process.env.REACT_APP_API_URL}/api/categories`)
       .then(response => {
         this.setState({ categories: response.data })
       })

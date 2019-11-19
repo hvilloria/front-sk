@@ -22,7 +22,7 @@ class OrderList extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:3000/api/orders')
+    axios.get(`${process.env.REACT_APP_API_URL}/api/orders`)
     .then((response) => {
       this.setState({
         orders: response.data,

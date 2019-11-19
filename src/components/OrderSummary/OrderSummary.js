@@ -62,7 +62,7 @@ class SummaryOrder extends Component {
       trackingId,
       notes
     } = this.props;
-    axios.post('http://localhost:3000/api/orders', {
+    axios.post(`${process.env.REACT_APP_API_URL}/api/orders`, {
       order: {
         client_name: clientName,
         client_phone_number: clientPhoneNumber,
