@@ -58,7 +58,9 @@ class SummaryOrder extends Component {
       clientPhoneNumber,
       serviceType,
       paymentType,
-      total
+      total,
+      trackingId,
+      notes
     } = this.props;
     axios.post('http://localhost:3000/api/orders', {
       order: {
@@ -66,11 +68,13 @@ class SummaryOrder extends Component {
         client_phone_number: clientPhoneNumber,
         service_type: serviceType,
         payment_type: paymentType,
+        tracking_id: trackingId,
         variant_ids,
+        notes,
         total: total.toFixed(2)
       }
     })
-    .then(response => {
+    .then(() => {
       this.props.history.push('/');
     }).catch((err)=> alert(err))
   }

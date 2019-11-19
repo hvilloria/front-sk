@@ -14,6 +14,9 @@ class OrderWrapper extends Component {
       paymentType: 'cash',
       clientName: '',
       clientPhoneNumber: '',
+      trackingId: '',
+      address: '',
+      notes: '',
       products: [],
       categories: []
     };
@@ -24,6 +27,9 @@ class OrderWrapper extends Component {
     this.handleTotalChange = this.handleTotalChange.bind(this);
     this.handleVariantSelected = this.handleVariantSelected.bind(this);
     this.handleProductRemover = this.handleProductRemover.bind(this);
+    this.handleTrackingIdChange = this.handleTrackingIdChange.bind(this);
+    this.handleAdressChange = this.handleAdressChange.bind(this);
+    this.handleNotesChange = this.handleNotesChange.bind(this);
   }
 
   componentDidMount() {
@@ -31,6 +37,14 @@ class OrderWrapper extends Component {
       .then(response => {
         this.setState({ categories: response.data })
       })
+  }
+
+  handleNotesChange(event) {
+    this.setState({notes: event.target.value})
+  }
+
+  handleAdressChange(event) {
+    this.setState({address: event.target.value})
   }
 
   handleClientName(event) {
@@ -51,6 +65,10 @@ class OrderWrapper extends Component {
 
   handleTotalChange(event) {
     this.setState({total: event.target.value})
+  }
+
+  handleTrackingIdChange(event) {
+    this.setState({trackingId: event.target.value})
   }
 
   handleProductRemover(indexOfProduct) {
@@ -99,9 +117,15 @@ class OrderWrapper extends Component {
               handleServiceTypeChange={this.handleServiceTypeChange}
               handlePaymentTypeChange={this.handlePaymentTypeChange}
               handleTotalChange={this.handleTotalChange}
+              handleTrackingIdChange={this.handleTrackingIdChange}
+              handleAdressChange={this.handleAdressChange}
+              handleNotesChange={this.handleNotesChange}
+              address={this.state.address}
+              trackingId={this.state.trackingId}
               serviceType={this.state.serviceType}
               paymentType={this.state.paymentType}
               categories={this.state.categories}
+              notes={this.state.notes}
             />
             <CategoryList
               categories={this.state.categories}
@@ -116,7 +140,10 @@ class OrderWrapper extends Component {
               paymentType={this.state.paymentType}
               total={this.state.total}
               products={this.state.products}
+              trackingId={this.state.trackingId}
+              address={this.state.address}
               handleProductRemover={this.handleProductRemover}
+              notes={this.state.notes}
             />
           </Col>
         </Row>
