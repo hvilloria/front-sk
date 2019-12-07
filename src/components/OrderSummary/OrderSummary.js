@@ -83,10 +83,8 @@ class SummaryOrder extends Component {
     const { serviceType } = this.props;
     if (serviceType === 'tk') {
        return 'Take Away'
-    } else if (serviceType === 'dl') {
-      return 'Delivery Local'
     } else {
-      return 'Pedidos Ya'
+      return 'Delivery Local'
     }
   }
 
