@@ -19,6 +19,7 @@ class OrderList extends Component {
       orderSelected: null
     }
     this.handleClick = this.handleClick.bind(this);
+    this.handleOrderState = this.handleOrderState.bind(this);
   }
 
   componentDidMount() {
@@ -27,6 +28,17 @@ class OrderList extends Component {
       this.setState({
         orders: response.data,
       })
+    })
+  }
+
+
+  handleOrderState(orderUpdated) {
+    let orders = this.state.orders;
+    orders.forEach((order, index) => {
+      if (order.id === orderUpdated.id) {
+        orders[index] = orderUpdated;
+        this.setState({ orders })
+      }
     })
   }
 
@@ -40,7 +52,8 @@ class OrderList extends Component {
 
   render() {
     const { orderClicked, orderSelected } = this.state;
-    let orderDetail = orderClicked ? <OrderDetail {...orderSelected} /> : null;
+    let orderDetail = orderClicked ?
+      <OrderDetail {...orderSelected} handleOrderState={this.handleOrderState} /> : null;
     let orders = [];
     orders = this.state.orders.map((order) => {
       return (
@@ -62,7 +75,7 @@ class OrderList extends Component {
             {order.payment_type}
           </td>
           <td>
-            Confirmado
+            {order.state}
           </td>
           <td>
             {order.products.map((product, i) => {
@@ -105,4 +118,4 @@ class OrderList extends Component {
   }
 }
 
-export default OrderList
+export default OrderList;
