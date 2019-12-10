@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "baseUrl": ".",
+    "paths": {
+      "~components/*": ["./src/app/components/*"],
+      "~screens/*": ["./src/app/screens/*"],
+      "~assets/*": ["./src/assets/*"],
+      "~constants/*": ["./src/constants/*"],
+      "~scss/*": ["./src/scss/*"],
+      "~utils/*": ["./src/utils/*"]
+    }
+  },
+  "exclude": ["node_modules"]
+}
