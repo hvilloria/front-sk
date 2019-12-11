@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component, Fragment } from 'react';
 import { Nav } from 'react-bootstrap';
 
 class Category extends Component {

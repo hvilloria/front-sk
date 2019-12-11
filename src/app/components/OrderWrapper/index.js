@@ -1,8 +1,6 @@
-import React, { Component } from "react";
-import OrderForm from '../OrderForm/OrderForm';
-import OrderSummary from '../OrderSummary/OrderSummary';
+import React, { Component } from 'react';
+import { CategoryList, OrderForm, OrderSummary } from '~components/';
 import { Container, Row, Col } from 'react-bootstrap';
-import CategoryList from '../CategoryList/CategoryList';
 const axios = require('axios');
 
 class OrderWrapper extends Component {

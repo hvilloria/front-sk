@@ -1,6 +1,5 @@
-import React, { Component, Fragment } from "react";
-import Category from "../Category/Category";
-import ProductList from "../ProductList/ProductList";
+import React, { Component, Fragment } from 'react';
+import { Category, ProductList } from '~components';
 import { Nav } from 'react-bootstrap';
 
 class CategoryList extends Component {

@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import OrderDetail from "../OrderDetail/OrderDetail";
+import React, { Component } from 'react';
+import { OrderDetail } from '~components';
 import { Table } from 'react-bootstrap';
 import styled from 'styled-components'
 const axios = require('axios');

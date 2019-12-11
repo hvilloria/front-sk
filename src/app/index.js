@@ -3,11 +3,9 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-} from "react-router-dom";
+} from 'react-router-dom';
 import '../App.css';
-import Header from './components/Header/Header';
-import OrderWrapper from "./components/OrderWrapper/OrderWrapper";
-import OrderList from "./components/OrderList/OrderList";
+import { Header, OrderWrapper, OrderList } from '~components';
 
 function App() {
   return (
