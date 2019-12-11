@@ -15,6 +15,7 @@
           "~utils": "./src/utils"
         }
       }
-    ]
+    ],
+    ["@babel/plugin-proposal-export-default-from"]
   ]
 }
