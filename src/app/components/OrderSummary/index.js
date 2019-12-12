@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import RemovableProduct from "../RemovableProduct/RemovableProduct";
+import React, { Component } from 'react';
+import { RemovableProduct } from '~components';
 import {
   withRouter
-} from "react-router-dom";
+} from 'react-router-dom';
 import { Card, Button, Modal } from 'react-bootstrap';
 const axios = require('axios');
 

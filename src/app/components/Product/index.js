@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { ListGroup } from 'react-bootstrap';
-import Variant from '../Variant/Variant';
+import { Variant } from '~components';
 import styled from 'styled-components'
 
 const ProductWrapper = styled.div`

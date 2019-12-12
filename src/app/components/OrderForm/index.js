@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import { Col, Form } from 'react-bootstrap';
 
 class FormOrder extends Component {
 
   render() {
     const disableTrackingId = () => {
-      if (this.props.serviceType !== "py") {
+      if (this.props.serviceType !== 'py') {
         return true;
       } else {
         return false;
@@ -13,7 +13,7 @@ class FormOrder extends Component {
     }
 
     const disableAddress = () => {
-      if (this.props.serviceType !== "dl") {
+      if (this.props.serviceType !== 'dl') {
         return true;
       } else {
         return false;

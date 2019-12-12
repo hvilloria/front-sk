@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import Product from "../Product/Product";
+import React, { Component } from 'react';
+import { Product } from '~components';
 import { ListGroup } from 'react-bootstrap';
 class ProductList extends Component {
   constructor(props) {

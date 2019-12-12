@@ -1,6 +1,6 @@
-import { FaMinus } from "react-icons/fa";
-import { IconContext } from "react-icons";
-import React, { Component } from "react";
+import React, { Component } from 'react';
+import { FaMinus } from 'react-icons/fa';
+import { IconContext } from 'react-icons';
 
 class RemovableProduct extends Component{
   constructor(props) {
