@@ -1,0 +1,21 @@
+{
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": [
+          "./src"
+        ],
+        "alias": {
+          "~components": "./src/app/components",
+          "~screens": "./src/app/screens",
+          "~assets": "./src/assets",
+          "~constants": "./src/constants",
+          "~scss": "./src/scss",
+          "~utils": "./src/utils"
+        }
+      }
+    ],
+    ["@babel/plugin-proposal-export-default-from"]
+  ]
+}
