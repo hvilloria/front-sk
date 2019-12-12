@@ -1,8 +1,6 @@
-import React, { Component } from 'react';
-import { RemovableProduct } from '~components';
-import {
-  withRouter
-} from 'react-router-dom';
+import React, { Component } from "react";
+import RemovableProduct from "../RemovableProduct/RemovableProduct";
+import { withRouter } from "react-router-dom";
 import { Card, Button, Modal } from 'react-bootstrap';
 const axios = require('axios');
 
@@ -72,6 +70,12 @@ class SummaryOrder extends Component {
         variant_ids,
         notes,
         total: total.toFixed(2)
+      }
+    }, {
+      headers: {
+        'uid': localStorage.getItem('uid'),
+        'access-token': localStorage.getItem('access_token'),
+        'client': localStorage.getItem('client')
       }
     })
     .then(() => {

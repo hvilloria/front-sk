@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { CategoryList, OrderForm, OrderSummary } from '~components/';
 import { Container, Row, Col } from 'react-bootstrap';
+import CategoryList from '../CategoryList/CategoryList';
+import { withRouter } from "react-router-dom";
 const axios = require('axios');
 
 class OrderWrapper extends Component {
@@ -31,9 +33,20 @@ class OrderWrapper extends Component {
   }
 
   componentDidMount() {
-    axios.get(`${process.env.REACT_APP_API_URL}/api/categories`)
+    axios.get(`${process.env.REACT_APP_API_URL}/api/categories`,
+      {
+        headers: {
+          'uid': localStorage.getItem('uid'),
+          'access-token': localStorage.getItem('access_token'),
+          'client': localStorage.getItem('client')
+        }
+      })
       .then(response => {
         this.setState({ categories: response.data })
+      }).catch((err) => {
+        if (err.response.status === 401) {
+          this.props.history.push('/login');
+        }
       })
   }
 
@@ -150,4 +163,4 @@ class OrderWrapper extends Component {
   }
 }
 
-export default OrderWrapper;
+export default withRouter(OrderWrapper);

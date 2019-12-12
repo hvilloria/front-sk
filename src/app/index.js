@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 import '../App.css';
 import { Header, OrderWrapper, OrderList } from '~components';
+import Login from "./components/Login/Login";
 
 function App() {
   return (
@@ -17,6 +18,9 @@ function App() {
         </Route>
         <Route exact path='/'>
           <OrderList/>
+        </Route>
+        <Route path='/login'>
+          <Login/>
         </Route>
       </Switch>
     </Router>

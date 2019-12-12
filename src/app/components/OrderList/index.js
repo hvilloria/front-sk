@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { OrderDetail } from '~components';
 import { Table } from 'react-bootstrap';
-import styled from 'styled-components'
+import styled from 'styled-components';
+import {
+  withRouter
+} from "react-router-dom";
 const axios = require('axios');
 
 
@@ -23,12 +26,21 @@ class OrderList extends Component {
   }
 
   componentDidMount() {
-    axios.get(`${process.env.REACT_APP_API_URL}/api/orders`)
-    .then((response) => {
-      this.setState({
-        orders: response.data,
+    axios.get(`${process.env.REACT_APP_API_URL}/api/orders`, {
+      headers: {
+        'uid': localStorage.getItem('uid'),
+        'access-token': localStorage.getItem('access_token'),
+        'client': localStorage.getItem('client')
+      }})
+      .then((response) => {
+        this.setState({
+          orders: response.data,
+        })
+      }).catch((err) => {
+        if (err.response.status === 401) {
+          this.props.history.push('/login');
+        }
       })
-    })
   }
 
 
@@ -118,4 +130,4 @@ class OrderList extends Component {
   }
 }
 
-export default OrderList;
+export default withRouter(OrderList);
