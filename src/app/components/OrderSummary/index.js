@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import RemovableProduct from "../RemovableProduct/RemovableProduct";
+import { RemovableProduct } from '~components/';
 import { withRouter } from "react-router-dom";
 import { Card, Button, Modal } from 'react-bootstrap';
-import { createOrder } from '../../services/backSkService';
+import { createOrder } from '../../../services/backSkService';
 
 class SummaryOrder extends Component {
   constructor(props) {

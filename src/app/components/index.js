@@ -11,3 +11,4 @@ export Product from './Product';
 export ProductList from './ProductList';
 export RemovableProduct from './RemovableProduct';
 export Variant from './Variant';
+export Login from './Login';

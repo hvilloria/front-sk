@@ -3,7 +3,7 @@ import { Card, Button } from 'react-bootstrap';
 import styled from 'styled-components';
 import { FaPrint } from 'react-icons/fa';
 import ReactToPrint from 'react-to-print';
-import { updateOrderStatus } from '../../services/backSkService';
+import { updateOrderStatus } from '../../../services/backSkService';
 
 const List = styled.li`
  list-style-type:none;

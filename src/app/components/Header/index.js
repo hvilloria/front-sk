@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Navbar, Nav } from 'react-bootstrap';
 import { Link, withRouter } from "react-router-dom";
-import { logOut } from '../../services/authService';
+import { logOut } from '../../../services/authService';
 import { DEFAULT_DISPLAY_NAME } from './constants';
 
 const Title = styled.h1`

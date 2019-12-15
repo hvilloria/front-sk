@@ -3,7 +3,7 @@ import { OrderDetail } from '~components';
 import { Table } from 'react-bootstrap';
 import styled from 'styled-components';
 import { withRouter } from "react-router-dom";
-import { getOrders } from '../../services/backSkService';
+import { getOrders } from '../../../services/backSkService';
 
 
 const OrdersTableContainer = styled.div`

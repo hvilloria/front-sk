@@ -5,8 +5,7 @@ import {
   Route,
 } from 'react-router-dom';
 import '../App.css';
-import { Header, OrderWrapper, OrderList } from '~components';
-import Login from "./components/Login/Login";
+import { Header, OrderWrapper, OrderList, Login } from '~components';
 
 function App() {
   return (

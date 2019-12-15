@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { CategoryList, OrderForm, OrderSummary } from '~components/';
 import { Container, Row, Col } from 'react-bootstrap';
-import CategoryList from '../CategoryList/CategoryList';
 import { withRouter } from "react-router-dom";
-import { getCategories } from '../../services/backSkService';
+import { getCategories } from '../../../services/backSkService';
 
 class OrderWrapper extends Component {
   constructor(props) {
