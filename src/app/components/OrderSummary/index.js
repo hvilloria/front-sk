@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import RemovableProduct from "../RemovableProduct/RemovableProduct";
 import { withRouter } from "react-router-dom";
 import { Card, Button, Modal } from 'react-bootstrap';
-const axios = require('axios');
+import { createOrder } from '../../services/backSkService';
 
 class SummaryOrder extends Component {
   constructor(props) {
@@ -60,7 +60,7 @@ class SummaryOrder extends Component {
       trackingId,
       notes
     } = this.props;
-    axios.post(`${process.env.REACT_APP_API_URL}/api/orders`, {
+    createOrder({
       order: {
         client_name: clientName,
         client_phone_number: clientPhoneNumber,
@@ -70,12 +70,6 @@ class SummaryOrder extends Component {
         variant_ids,
         notes,
         total: total.toFixed(2)
-      }
-    }, {
-      headers: {
-        'uid': localStorage.getItem('uid'),
-        'access-token': localStorage.getItem('access_token'),
-        'client': localStorage.getItem('client')
       }
     })
     .then(() => {
