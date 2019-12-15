@@ -5,7 +5,7 @@ import {
   Route,
 } from 'react-router-dom';
 import '../App.css';
-import { Header, OrderWrapper, OrderList } from '~components';
+import { Header, OrderWrapper, OrderList, Login } from '~components';
 
 function App() {
   return (
@@ -17,6 +17,9 @@ function App() {
         </Route>
         <Route exact path='/'>
           <OrderList/>
+        </Route>
+        <Route path='/login'>
+          <Login/>
         </Route>
       </Switch>
     </Router>

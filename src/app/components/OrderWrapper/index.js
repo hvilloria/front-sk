@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { CategoryList, OrderForm, OrderSummary } from '~components/';
 import { Container, Row, Col } from 'react-bootstrap';
-const axios = require('axios');
+import { withRouter } from "react-router-dom";
+import { getCategories } from '../../../services/backSkService';
 
 class OrderWrapper extends Component {
   constructor(props) {
@@ -31,9 +32,13 @@ class OrderWrapper extends Component {
   }
 
   componentDidMount() {
-    axios.get(`${process.env.REACT_APP_API_URL}/api/categories`)
+    getCategories()
       .then(response => {
         this.setState({ categories: response.data })
+      }).catch((err) => {
+        if (err.response.status === 401) {
+          this.props.history.push('/login');
+        }
       })
   }
 
@@ -150,4 +155,4 @@ class OrderWrapper extends Component {
   }
 }
 
-export default OrderWrapper;
+export default withRouter(OrderWrapper);

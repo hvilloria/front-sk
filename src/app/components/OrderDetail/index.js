@@ -3,9 +3,7 @@ import { Card, Button } from 'react-bootstrap';
 import styled from 'styled-components';
 import { FaPrint } from 'react-icons/fa';
 import ReactToPrint from 'react-to-print';
-import { throwStatement } from "@babel/types";
-const axios = require('axios');
-
+import { updateOrderStatus } from '../../../services/backSkService';
 
 const List = styled.li`
  list-style-type:none;
@@ -22,7 +20,7 @@ class OrderDetail extends Component {
   }
 
   handleClick(orderStatus) {
-    axios.patch(`${process.env.REACT_APP_API_URL}/api/orders/${this.props.id}/modify_status`, {
+    updateOrderStatus(this.props.id, {
       status: orderStatus
     }).then((response) => {
       this.props.handleOrderState(response.data);
