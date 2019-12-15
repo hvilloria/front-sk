@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Form, Button } from "react-bootstrap";
 import styled from "styled-components";
 import { withRouter } from "react-router-dom";
-const axios = require('axios');
+import  { login }  from '../../services/authService';
 
 const FormLoginWrapper = styled.div`
   max-width: 40%;
@@ -18,15 +18,10 @@ class Login extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    axios.post(`${process.env.REACT_APP_API_URL}/auth/sign_in`, {
+    login({
       email: e.target[0].value,
       password: e.target[1].value
-    }).then((response) => {
-      localStorage.setItem('access_token', response.headers['access-token'])
-      localStorage.setItem('client', response.headers['client'])
-      localStorage.setItem('uid', response.headers['uid'])
-      this.props.history.push("/")
-    })
+    }).then(() => this.props.history.push('/'))
   }
 
   render() {

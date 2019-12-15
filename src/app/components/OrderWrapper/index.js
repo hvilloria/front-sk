@@ -3,7 +3,7 @@ import { CategoryList, OrderForm, OrderSummary } from '~components/';
 import { Container, Row, Col } from 'react-bootstrap';
 import CategoryList from '../CategoryList/CategoryList';
 import { withRouter } from "react-router-dom";
-const axios = require('axios');
+import { getCategories } from '../../services/backSkService';
 
 class OrderWrapper extends Component {
   constructor(props) {
@@ -33,14 +33,7 @@ class OrderWrapper extends Component {
   }
 
   componentDidMount() {
-    axios.get(`${process.env.REACT_APP_API_URL}/api/categories`,
-      {
-        headers: {
-          'uid': localStorage.getItem('uid'),
-          'access-token': localStorage.getItem('access_token'),
-          'client': localStorage.getItem('client')
-        }
-      })
+    getCategories()
       .then(response => {
         this.setState({ categories: response.data })
       }).catch((err) => {

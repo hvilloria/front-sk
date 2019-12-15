@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Navbar, Nav } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from "react-router-dom";
+import { logOut } from '../../services/authService';
+import { DEFAULT_DISPLAY_NAME } from './constants';
 
 const Title = styled.h1`
   font-family: 'Raleway',sans-serif;
@@ -28,31 +30,21 @@ const HeaderWrapper = styled.header`
 `;
 
 class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.handleCLick = this.handleCLick.bind(this);
-  }
 
-  handleCLick() {
-    if (localStorage.getItem("uid") !== null) {
-      axios.delete(`${process.env.REACT_APP_API_URL}/auth/sign_out`, {
-        headers: {
-          'uid': localStorage.getItem('uid'),
-          'access-token': localStorage.getItem('access_token'),
-          'client': localStorage.getItem('client')
-        }
-      }).then(() => {
-        localStorage.clear();
+  handleCLick = () => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user.uid) {
+      logOut(user).then(() => {
         this.props.history.push('/login')
       })
     }
   }
 
   render() {
-    let displayName = "login";
-    if (localStorage.getItem("uid") !== null) {
-      displayName = localStorage.getItem("uid");
-    }
+    const user = JSON.parse(localStorage.getItem("user"));
+    const uid = user && user.uid;
+    const displayName = uid || DEFAULT_DISPLAY_NAME;
+
     return (
       <HeaderWrapper>
         <Title><Link to="/" style={{ textDecoration: 'none', color: '#707070' }}>Shirokuro</Link></Title>

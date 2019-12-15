@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 import { OrderDetail } from '~components';
 import { Table } from 'react-bootstrap';
 import styled from 'styled-components';
-import {
-  withRouter
-} from "react-router-dom";
-const axios = require('axios');
+import { withRouter } from "react-router-dom";
+import { getOrders } from '../../services/backSkService';
 
 
 const OrdersTableContainer = styled.div`
@@ -26,12 +24,7 @@ class OrderList extends Component {
   }
 
   componentDidMount() {
-    axios.get(`${process.env.REACT_APP_API_URL}/api/orders`, {
-      headers: {
-        'uid': localStorage.getItem('uid'),
-        'access-token': localStorage.getItem('access_token'),
-        'client': localStorage.getItem('client')
-      }})
+    getOrders()
       .then((response) => {
         this.setState({
           orders: response.data,
