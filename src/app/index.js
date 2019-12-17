@@ -6,16 +6,22 @@ import {
 } from 'react-router-dom';
 import '../App.css';
 import { Header, OrderWrapper, OrderList, Login } from '~components';
+import { MainContainer } from '~screens';
 
 function App() {
   return (
     <Router>
-      <Header/>
       <Switch>
-        <Route path='/orders'>
+        {
+          window.location.pathname === '/' ? '':<Header/>
+        }
+        <Route path='/'>
+          <MainContainer/>
+        </Route>
+        <Route path='/admin/orders'>
           <OrderWrapper/>
         </Route>
-        <Route exact path='/'>
+        <Route exact path='/admin'>
           <OrderList/>
         </Route>
         <Route path='/login'>

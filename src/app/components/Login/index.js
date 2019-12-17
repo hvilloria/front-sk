@@ -21,7 +21,7 @@ class Login extends Component {
     login({
       email: e.target[0].value,
       password: e.target[1].value
-    }).then(() => this.props.history.push('/'))
+    }).then(() => this.props.history.push('/admin'))
   }
 
   render() {

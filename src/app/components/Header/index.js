@@ -47,12 +47,12 @@ class Header extends Component {
 
     return (
       <HeaderWrapper>
-        <Title><Link to="/" style={{ textDecoration: 'none', color: '#707070' }}>Shirokuro</Link></Title>
+        <Title><Link to="/admin" style={{ textDecoration: 'none', color: '#707070' }}>Shirokuro</Link></Title>
         <Navbar bg="light" expand="lg">
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <Link to="/orders" style={{ textDecoration: 'none', color: '#707070' }}>Crear Comanda</Link>
+              <Nav.Link><Link to="/admin/orders" style={{ textDecoration: 'none', color: '#707070' }}>Crear Comanda</Link></Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Navbar>

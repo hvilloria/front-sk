@@ -73,7 +73,7 @@ class SummaryOrder extends Component {
       }
     })
     .then(() => {
-      this.props.history.push('/');
+      this.props.history.push('/admin');
     }).catch((err)=> alert(err))
   }
 
