@@ -52,7 +52,7 @@ class Header extends Component {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link><Link to="/orders" style={{ textDecoration: 'none', color: '#707070' }}>Crear Comanda</Link></Nav.Link>
+              <Link to="/orders" style={{ textDecoration: 'none', color: '#707070' }}>Crear Comanda</Link>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
