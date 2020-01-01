@@ -1,0 +1,49 @@
+@mixin flex-column-aligned {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.BannerContainer {
+  background-image: url(../../../../../assets/images/banner.png);
+  height: 95vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  color: white;
+  padding-top: 60px;
+}
+
+.Img {
+  margin-bottom: 5px;
+  width: 40px;
+}
+
+.Title {
+  font-family: 'Fira Sans', sans-serif;
+  font-weight: 600;
+}
+.Subtitle {
+  font-family: 'Fira Sans', sans-serif;
+  font-weight: normal;
+  font-size: 20px;
+}
+
+.PresentationContainer {
+ @include flex-column-aligned;
+ margin-top: 10px;
+}
+
+.MakeOrderContainer{
+  @include flex-column-aligned;
+  margin-top: 180px;
+  h3 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 600;
+    text-align: center;
+    font-size: 17px;
+    width: 190px;
+  }
+}
