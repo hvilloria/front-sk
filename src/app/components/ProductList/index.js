@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import { Product } from '~components';
 import { ListGroup } from 'react-bootstrap';
 class ProductList extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   products() {
     const products = this.props.products;

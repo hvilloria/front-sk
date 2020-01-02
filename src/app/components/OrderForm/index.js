@@ -4,14 +4,6 @@ import { Col, Form } from 'react-bootstrap';
 class FormOrder extends Component {
 
   render() {
-    const disableTrackingId = () => {
-      if (this.props.serviceType !== 'py') {
-        return true;
-      } else {
-        return false;
-      }
-    }
-
     const disableAddress = () => {
       if (this.props.serviceType !== 'dl') {
         return true;
@@ -53,7 +45,6 @@ class FormOrder extends Component {
               >
                 <option value="tk">Take Away</option>
                 <option value="dl">Delivery Local</option>
-                <option value="py">Pedidos Ya</option>
               </Form.Control>
             </Form.Group>
             <Form.Group as={Col} controlId="formPaymentType">
@@ -68,16 +59,6 @@ class FormOrder extends Component {
             </Form.Group>
           </Form.Row>
           <Form.Row>
-            <Form.Group as={Col} controlId="trackingId">
-              <Form.Label>Identificador de pedido</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Identificador de pedido"
-                disabled={disableTrackingId()}
-                onChange={this.props.handleTrackingIdChange}
-                value={this.props.trackingId}
-              />
-            </Form.Group>
             {/* // TODO: una vez implementado en el back los parametros, descomentar esto. */}
             {/* <Form.Group as={Col} controlId="address">
               <Form.Label>Dirección</Form.Label>
