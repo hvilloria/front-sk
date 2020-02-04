@@ -4,7 +4,7 @@ import {
   Switch,
   Route,
 } from 'react-router-dom';
-import '../App.css';
+import '../App.scss';
 import { Header, OrderWrapper, OrderList, Login } from '~components';
 import { MainContainer } from '~screens';
 

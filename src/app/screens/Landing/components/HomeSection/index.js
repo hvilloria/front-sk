@@ -1,23 +1,19 @@
 import React, { Component } from 'react';
-import makeorder from '~assets/images/makeorder.png';
-import styles from './HomeSection.module.scss';
+import clickToOrder from '../../../../../assets/images/click_to_order.svg';
+import styles from './homeSection.module.scss';
 
 
 class HomeSection extends Component {
   render() {
     return (
-      // caja banner
-      <div className={styles.BannerContainer}>
-        {/* contenedor de titulo y subtitulo */}
-        <div className={styles.PresentationContainer}>
-          {/* titulo */}
-          <h1 className={styles.Title}>SHIROKURO</h1>
-          <h2 className={styles.Subtitle}>Take Away & Delivery</h2>
+      <div className={styles.homeContainer}>
+        <div className={styles.titlesContainer}>
+          <h1 className={styles.title}>SHIROKURO</h1>
+          <h2 className={styles.subtitle}>TakeAway & Delivery</h2>
         </div>
-        {/* contenedor icono y texto */}
-        <div className={styles.MakeOrderContainer}>
-          <img src={makeorder} className={styles.Img}></img>
-          <h3>Quiero hacer un pedido</h3>
+        <div className={styles.clickToOrderContainer}>
+          <img src={clickToOrder} className={styles.clickToOrderImg} alt=''/>
+          <h4 className={styles.clickToOrderText}>Quiero hacer un Pedido</h4>
         </div>
       </div>
     )
