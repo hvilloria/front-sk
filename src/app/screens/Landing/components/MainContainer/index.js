@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import { HomeSection, AboutSection } from '~screens';
-import styles from './Main.module.scss';
+import { HomeSection, About, DropdownMenu } from '~screens';
+import styles from './mainContainer.module.scss';
 
 class MainContainer extends Component {
   render() {
     return (
-      <div className={styles.MainContainer}>
+      <div className={styles.container}>
         <HomeSection />
-        <AboutSection />
+        <About />
+        <DropdownMenu />
       </div>
     )
   }
