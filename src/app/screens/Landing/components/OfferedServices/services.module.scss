@@ -1,0 +1,44 @@
+.servicesContainer{
+  padding: 35px;
+}
+
+.itemOption{
+  display: flex;
+  width: 140px;
+  height: 40px;
+  opacity: 0.88;
+  border-radius: 30px;
+  border: solid 0.5px #707070;
+  justify-content: center;
+  align-items: center;
+}
+
+.serviceOptions{
+  margin-top: 70px;
+  height: 25vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.itemOption__redButton{
+  background-color: #c1172e;
+  border: 0px;
+}
+
+.title{
+  font-family: 'Fira Sans', sans-serif;
+  font-weight: 500;
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.description{
+  font-family: 'Lato', sans-serif;
+  font-weight: normal;
+  font-size: 15px;
+}
+
+.map{
+  width: 100%;
+}

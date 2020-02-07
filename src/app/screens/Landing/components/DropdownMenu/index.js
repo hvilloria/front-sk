@@ -30,7 +30,7 @@ class DropdownMenu extends Component {
     let { categories, categorySelected } = this.state;
     return(
       <div className={styles.menuContainer}>
-        <h2>Nuestro Menú</h2>
+        <h2 className={styles.menuTitle}>Nuestro Menú</h2>
         <DropdownButton 
           className={styles.dropdownButton}
           id="dropdown-basic-button" 
@@ -46,9 +46,15 @@ class DropdownMenu extends Component {
         <div className={styles.menuItemContainer}>
           { categorySelected.products && categorySelected.products.map((product)=>{
             return (
-              <div key={product.id}>
-                {product.name}
-              </div>
+              product.variants.map((variant) => {
+                return(
+                  <div key={variant.id} className={styles.itemContainer}>
+                    <h2 className={styles.itemName}>{product.name} {variant.name}</h2>
+                    <div className={styles.separatorLine}></div>
+                    <h2 className={styles.itemPrice}>${variant.price}</h2>
+                  </div>
+                )
+              })
             )
           }) }
         </div>

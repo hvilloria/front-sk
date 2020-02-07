@@ -12,17 +12,15 @@ function App() {
   return (
     <Router>
       <Switch>
-        {
-          window.location.pathname === '/' ? '':<Header/>
-        }
-        <Route path='/'>
-          <MainContainer/>
-        </Route>
         <Route path='/admin/orders'>
           <OrderWrapper/>
         </Route>
-        <Route exact path='/admin'>
+        <Route path='/admin'>
+          <Header/>
           <OrderList/>
+        </Route>
+        <Route path='/'>
+          <MainContainer/>
         </Route>
         <Route path='/login'>
           <Login/>

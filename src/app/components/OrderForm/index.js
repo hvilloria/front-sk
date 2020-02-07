@@ -4,13 +4,13 @@ import { Col, Form } from 'react-bootstrap';
 class FormOrder extends Component {
 
   render() {
-    const disableAddress = () => {
-      if (this.props.serviceType !== 'dl') {
-        return true;
-      } else {
-        return false;
-      }
-     }
+    // const disableAddress = () => {
+    //   if (this.props.serviceType !== 'dl') {
+    //     return true;
+    //   } else {
+    //     return false;
+    //   }
+    //  }
 
     return (
       <div>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HomeSection, About, DropdownMenu } from '~screens';
+import { HomeSection, About, DropdownMenu, OfferedServices, Footer } from '~screens';
 import styles from './mainContainer.module.scss';
 
 class MainContainer extends Component {
@@ -9,6 +9,8 @@ class MainContainer extends Component {
         <HomeSection />
         <About />
         <DropdownMenu />
+        <OfferedServices />
+        <Footer />
       </div>
     )
   }
