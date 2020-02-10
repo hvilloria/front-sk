@@ -17,7 +17,7 @@
   },
   "scripts": {
     "start": "PORT=3001 rescripts start",
-    "build": "react-scripts build",
+    "build": "rescripts build",
     "test": "rescripts test"
   },
   "eslintConfig": {
