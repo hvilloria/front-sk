@@ -4,19 +4,23 @@ import {
   Switch,
   Route,
 } from 'react-router-dom';
-import '../App.css';
+import '../App.scss';
 import { Header, OrderWrapper, OrderList, Login } from '~components';
+import { MainContainer } from '~screens';
 
 function App() {
   return (
     <Router>
-      <Header/>
       <Switch>
-        <Route path='/orders'>
+        <Route path='/admin/orders'>
           <OrderWrapper/>
         </Route>
-        <Route exact path='/'>
+        <Route path='/admin'>
+          <Header/>
           <OrderList/>
+        </Route>
+        <Route path='/'>
+          <MainContainer/>
         </Route>
         <Route path='/login'>
           <Login/>
