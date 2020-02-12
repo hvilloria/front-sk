@@ -8,11 +8,14 @@
         ],
         "alias": {
           "~components": "./src/app/components",
+          "~admscreens": "./src/app/Backoffice/screens",
+          "~admcomponents": "./src/app/Backoffice/components",
           "~screens": "./src/app/screens",
           "~assets": "./src/assets",
           "~constants": "./src/constants",
           "~scss": "./src/scss",
-          "~utils": "./src/utils"
+          "~utils": "./src/utils",
+          "~services": "./src/services"
         }
       }
     ],
