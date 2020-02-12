@@ -1,0 +1,1 @@
+export EditableProduct from './EditableProduct';
