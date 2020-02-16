@@ -1,0 +1,42 @@
+.footerContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 35px;
+}
+
+.text{
+  font-family: 'Lato';
+  font-weight: normal;
+  font-size: 15px;
+  text-align: center;
+}
+
+.text__withMargin {
+  margin-left: 5px;
+}
+
+.whatsappContainer{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin: 25px 0px;
+}
+
+.instagramContainer{
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+}
+
+.instagramIcon{
+  margin-right: 5px;
+}
+
+.copyrightText{
+  color: #7c7c7c;
+  font-family: 'Lato', sans-serif;
+  font-weight: normal;
+  font-size: 9.5px;
+  margin-top: 20px;
+}

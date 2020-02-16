@@ -1,0 +1,58 @@
+.menuContainer{
+  overflow: scroll;
+  background-color: #39161b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 35px;
+  height: 100vh;
+}
+
+.menuItemContainer{
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.menuTitle{
+  display: flex;
+  align-self: flex-start;
+}
+
+.dropdownButton{
+  width: 100%;
+  button{
+    margin: 30px 0px;
+    width: 100%;
+    background-color: transparent !important;
+    border-radius: 8px !important;
+    border: solid 2px #6a2a2f !important;
+  }
+}
+
+.itemName{
+  font-family: 'Lato', sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.itemPrice{
+  font-family: 'Lato', sans-serif;
+  font-weight: normal;
+  color: #ffe0e4;
+  font-size: 12px;
+}
+
+.separatorLine{
+  background-color: #6a2a2f;
+  height: 1px;
+  width: 30%;
+  margin-left: auto;
+  margin-right: 20px;
+}
+
+.itemContainer{
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}

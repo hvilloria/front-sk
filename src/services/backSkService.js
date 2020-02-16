@@ -17,6 +17,13 @@ export const createOrder = async (order) => {
   await axios.post(`${API_URL}/api/orders`, order , headers());
 }
 
+export const updateVariant = async (variantId, price) => {
+  await axios.patch(`${API_URL}/api/variants/${variantId}`,
+    { variant: {price} },
+    headers()
+  )
+}
+
 export const updateOrderStatus = async (orderId, orderStatus) => {
   return await axios.patch(`${API_URL}/api/orders/${orderId}/modify_status`,
     orderStatus,

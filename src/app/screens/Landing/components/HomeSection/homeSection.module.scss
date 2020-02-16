@@ -1,0 +1,45 @@
+.homeContainer{
+  background-image: url('../../../../../assets/images/banner.png');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+	padding: 35px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.title{
+	font-family: 'Fira Sans', sans-serif;
+	font-weight: 600;
+}
+
+.subtitle{
+	font-family: 'Fira Sans', sans-serif;
+	font-weight: normal;
+	font-size: 15px;
+}
+
+.titlesContainer{
+  display: flex;
+  flex-direction: column;
+	align-items: center;
+	margin-top: 100px;
+}
+
+.clickToOrderContainer{
+  display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 160px;
+}
+
+.clickToOrderText{
+	font-family: 'Lato', sans-serif;
+	font-weight: bold;
+	font-size: 15px;
+}
+
+.clickToOrderImg{
+	margin-bottom: 10px;
+}
