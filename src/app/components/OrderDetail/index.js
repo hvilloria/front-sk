@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { FaPrint } from 'react-icons/fa';
 import ReactToPrint from 'react-to-print';
 import { updateOrderStatus } from '../../../services/backSkService';
+import moment from 'moment';
 
 const List = styled.li`
  list-style-type:none;
@@ -40,6 +41,7 @@ class OrderDetail extends Component {
           <Card.Header><TextToPrint>{this.props.client_name}</TextToPrint></Card.Header>
           <Card.Body style={{ maxWidth: "70mm" }}>
             <Card.Text>
+              <List>Fecha: <TextToPrint>{moment(this.props.created_at).format('DD / MM / YYYY')}</TextToPrint></List>
               <List>Servicio: <TextToPrint>{this.props.service_type}</TextToPrint></List>
               <List>Pago: <TextToPrint>{this.props.payment_type}</TextToPrint></List>
             </Card.Text>
