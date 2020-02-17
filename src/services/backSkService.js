@@ -13,6 +13,10 @@ export const getCategories = async () => {
   return await axios.get(`${API_URL}/api/categories`, headers());
 }
 
+export const getSells = async () => {
+  return await axios.get(`${API_URL}/api/sells`, headers());
+}
+
 export const createOrder = async (order) => {
   await axios.post(`${API_URL}/api/orders`, order , headers());
 }

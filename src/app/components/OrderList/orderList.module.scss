@@ -1,0 +1,46 @@
+.statBox{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 250px;
+  height: 180px;
+  background-color: #fafafa;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px 2px rgba(212, 212, 212, 0.58);
+}
+
+.icon{
+  color: #ffffff;
+}
+
+.statValue{
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: 25px;
+  color: #545e66;
+  margin: auto;
+}
+
+.statBoxHeader{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 2px;
+  width: 250px;
+  height: 45px;
+  border-radius:  10px 10px 0px 0px;
+  background-image: linear-gradient(to right, #4b4b4b -179%, #6f6f6f 278%);
+}
+
+.statHeaderTitle{
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  color: #ffffff;
+  margin-bottom: 0px;
+}
+.StatsContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}

@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import { OrderDetail } from '~components';
 import { Table } from 'react-bootstrap';
 import styled from 'styled-components';
+import styles from './orderList.module.scss';
 import { withRouter } from "react-router-dom";
-import { getOrders } from '../../../services/backSkService';
+import { getOrders, getSells } from '../../../services/backSkService';
+import EqualizerIcon from '@material-ui/icons/Equalizer';
+import MotorcycleIcon from '@material-ui/icons/Motorcycle';
 
 
 const OrdersTableContainer = styled.div`
@@ -17,23 +20,22 @@ class OrderList extends Component {
     this.state = {
       orders: [],
       orderClicked: false,
-      orderSelected: null
+      orderSelected: null,
+      tkAmountSold: 0,
+      dlAmountSold: 0,
     }
     this.handleClick = this.handleClick.bind(this);
     this.handleOrderState = this.handleOrderState.bind(this);
   }
 
   componentDidMount() {
-    getOrders()
-      .then((response) => {
-        this.setState({
-          orders: response.data,
-        })
-      }).catch((err) => {
-        if (err.response.status === 401) {
-          this.props.history.push('/login');
-        }
+    Promise.all([getOrders(), getSells()]).then( values => {
+      this.setState({
+        orders: values[0].data,
+        tkAmountSold: values[1].data.tk,
+        dlAmountSold: values[1].data.dl
       })
+    })
   }
 
 
@@ -99,26 +101,44 @@ class OrderList extends Component {
       )
      })
     return (
-      <OrdersTableContainer>
-        <Table hover bordered>
-          <thead>
-            <tr>
-              <th>Cliente</th>
-              <th>Nro orden</th>
-              <th>Retiro</th>
-              <th>Pago</th>
-              <th>Estado</th>
-              <th>Productos</th>
-              <th>Fecha</th>
-              <th>Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            { orders }
-          </tbody>
-        </Table>
-        { orderDetail }
-      </OrdersTableContainer>
+      <>
+        <OrdersTableContainer>
+          <Table hover bordered>
+            <thead>
+              <tr>
+                <th>Cliente</th>
+                <th>Nro orden</th>
+                <th>Retiro</th>
+                <th>Pago</th>
+                <th>Estado</th>
+                <th>Productos</th>
+                <th>Fecha</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              { orders }
+            </tbody>
+          </Table>
+          { orderDetail }
+        </OrdersTableContainer>
+        <div className={styles.StatsContainer}>
+          <div className={styles.statBox}>
+            <div className={styles.statBoxHeader}>
+              <h2 className={styles.statHeaderTitle}>Ventas Take away</h2>
+              <EqualizerIcon className={styles.icon}/>
+            </div>
+            <p className={styles.statValue}>${this.state.tkAmountSold}</p>
+          </div>
+          <div className={styles.statBox}>
+            <div className={styles.statBoxHeader}>
+              <h2 className={styles.statHeaderTitle}>Ventas Delivery Local</h2>
+              <MotorcycleIcon className={styles.icon}/>
+            </div>
+            <p className={styles.statValue}>${this.state.dlAmountSold}</p>
+          </div>
+        </div>
+      </>
     )
   }
 }

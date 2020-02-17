@@ -27,6 +27,7 @@ const HeaderWrapper = styled.header`
   background-color: #fafafa;
   justify-content: space-around;
   height: 80px;
+  box-shadow: 0 1.5px 3px 0 rgba(0, 0, 0, 0.16);
 `;
 
 class Header extends Component {
