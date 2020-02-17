@@ -55,6 +55,7 @@ class FormOrder extends Component {
                 value={this.props.payment_type}
               >
                 <option value="cash">Efectivo</option>
+                <option value="online">Online</option>
               </Form.Control>
             </Form.Group>
           </Form.Row>

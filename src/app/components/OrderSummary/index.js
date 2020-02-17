@@ -40,9 +40,7 @@ class SummaryOrder extends Component {
 
   paymentType() {
     const { paymentType } = this.props;
-    if (paymentType === 'cash') {
-       return 'Efectivo'
-    }
+    return paymentType === 'cash' ? 'Efectivo' : 'Online'
   }
 
   handleClickModal() {
