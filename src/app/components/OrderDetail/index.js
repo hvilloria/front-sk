@@ -43,6 +43,9 @@ class OrderDetail extends Component {
               <List>Servicio: <TextToPrint>{this.props.service_type}</TextToPrint></List>
               <List>Pago: <TextToPrint>{this.props.payment_type}</TextToPrint></List>
             </Card.Text>
+            <Card.Text>
+              dirección: <TextToPrint>{this.props.address || 'no aplica'} </TextToPrint>
+            </Card.Text>
             <br></br>
             <Card.Text>
               {this.props.products.map((product, i) => {

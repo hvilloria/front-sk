@@ -54,6 +54,7 @@ class SummaryOrder extends Component {
       clientPhoneNumber,
       serviceType,
       paymentType,
+      address,
       total,
       trackingId,
       notes
@@ -64,6 +65,7 @@ class SummaryOrder extends Component {
         client_phone_number: clientPhoneNumber,
         service_type: serviceType,
         payment_type: paymentType,
+        address: address,
         tracking_id: trackingId,
         variant_ids,
         notes,
@@ -107,6 +109,9 @@ class SummaryOrder extends Component {
           </Card.Text>
           <Card.Text>
             Tipo de Pago: { this.paymentType() }
+          </Card.Text>
+          <Card.Text>
+            Dirección: { this.props.address }
           </Card.Text>
           <Card.Text>
             Productos: { this.ProductSummaryList() }

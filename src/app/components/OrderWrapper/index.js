@@ -27,7 +27,7 @@ class OrderWrapper extends Component {
     this.handleVariantSelected = this.handleVariantSelected.bind(this);
     this.handleProductRemover = this.handleProductRemover.bind(this);
     this.handleTrackingIdChange = this.handleTrackingIdChange.bind(this);
-    this.handleAdressChange = this.handleAdressChange.bind(this);
+    this.handleAddressChange = this.handleAddressChange.bind(this);
     this.handleNotesChange = this.handleNotesChange.bind(this);
   }
 
@@ -46,7 +46,7 @@ class OrderWrapper extends Component {
     this.setState({notes: event.target.value})
   }
 
-  handleAdressChange(event) {
+  handleAddressChange(event) {
     this.setState({address: event.target.value})
   }
 
@@ -121,7 +121,7 @@ class OrderWrapper extends Component {
               handlePaymentTypeChange={this.handlePaymentTypeChange}
               handleTotalChange={this.handleTotalChange}
               handleTrackingIdChange={this.handleTrackingIdChange}
-              handleAdressChange={this.handleAdressChange}
+              handleAddressChange={this.handleAddressChange}
               handleNotesChange={this.handleNotesChange}
               address={this.state.address}
               trackingId={this.state.trackingId}
