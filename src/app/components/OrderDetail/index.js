@@ -75,12 +75,12 @@ class OrderDetail extends Component {
           }} content={() => this.orderRef.current} />
           <button
             type="button"
-            class="btn btn-light"
+            className="btn btn-light"
             onClick={() => { this.handleClick('finish') }}
           >Finalizar</button>
           <button
             type="button"
-            class="btn btn-danger"
+            className="btn btn-danger"
             onClick={() => { this.handleClick('cancel') }}
           >Cancelar</button>
         </ButtonWrapper>

@@ -27,6 +27,7 @@ class FormOrder extends Component {
                 type="text"
                 placeholder="Numero de Telefono"
                 onChange={this.props.handleClientPhoneNumber}
+                onBlur={this.props.handleBlurPhoneNumber}
               />
             </Form.Group>
           </Form.Row>

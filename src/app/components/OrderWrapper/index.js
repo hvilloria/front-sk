@@ -21,6 +21,7 @@ class OrderWrapper extends Component {
     };
     this.handleClientName = this.handleClientName.bind(this);
     this.handleClientPhoneNumber = this.handleClientPhoneNumber.bind(this);
+    this.handleBlurPhoneNumber = this.handleBlurPhoneNumber.bind(this);
     this.handleServiceTypeChange = this.handleServiceTypeChange.bind(this);
     this.handlePaymentTypeChange = this.handlePaymentTypeChange.bind(this);
     this.handleTotalChange = this.handleTotalChange.bind(this);
@@ -56,6 +57,11 @@ class OrderWrapper extends Component {
 
   handleClientPhoneNumber(event) {
     this.setState({clientPhoneNumber: event.target.value})
+  }
+
+  handleBlurPhoneNumber(event){
+    let clientPhoneNumber = event.target.value.replace(/\s|-/g,'');
+    this.setState({clientPhoneNumber});
   }
 
   handleServiceTypeChange(event) {
@@ -117,6 +123,7 @@ class OrderWrapper extends Component {
             <OrderForm
               handleClientName={this.handleClientName}
               handleClientPhoneNumber={this.handleClientPhoneNumber}
+              handleBlurPhoneNumber={this.handleBlurPhoneNumber}
               handleServiceTypeChange={this.handleServiceTypeChange}
               handlePaymentTypeChange={this.handlePaymentTypeChange}
               handleTotalChange={this.handleTotalChange}
