@@ -4,13 +4,9 @@ import { Col, Form } from 'react-bootstrap';
 class FormOrder extends Component {
 
   render() {
-    // const disableAddress = () => {
-    //   if (this.props.serviceType !== 'dl') {
-    //     return true;
-    //   } else {
-    //     return false;
-    //   }
-    //  }
+    const disableAddress = () => {
+      return this.props.serviceType !== 'dl' ? true : false;
+     }
 
     return (
       <div>
@@ -31,6 +27,7 @@ class FormOrder extends Component {
                 type="text"
                 placeholder="Numero de Telefono"
                 onChange={this.props.handleClientPhoneNumber}
+                onBlur={this.props.handleBlurPhoneNumber}
               />
             </Form.Group>
           </Form.Row>
@@ -55,12 +52,12 @@ class FormOrder extends Component {
                 value={this.props.payment_type}
               >
                 <option value="cash">Efectivo</option>
+                <option value="online">Online</option>
               </Form.Control>
             </Form.Group>
           </Form.Row>
           <Form.Row>
-            {/* // TODO: una vez implementado en el back los parametros, descomentar esto. */}
-            {/* <Form.Group as={Col} controlId="address">
+            <Form.Group as={Col} controlId="address">
               <Form.Label>Dirección</Form.Label>
               <Form.Control
                 type="text"
@@ -69,7 +66,7 @@ class FormOrder extends Component {
                 onChange={this.props.handleAddressChange}
                 value={this.props.address}
               />
-            </Form.Group> */}
+            </Form.Group>
           </Form.Row>
           <Form.Row>
             <Form.Group as={Col} controlId="Notes">

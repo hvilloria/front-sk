@@ -21,13 +21,14 @@ class OrderWrapper extends Component {
     };
     this.handleClientName = this.handleClientName.bind(this);
     this.handleClientPhoneNumber = this.handleClientPhoneNumber.bind(this);
+    this.handleBlurPhoneNumber = this.handleBlurPhoneNumber.bind(this);
     this.handleServiceTypeChange = this.handleServiceTypeChange.bind(this);
     this.handlePaymentTypeChange = this.handlePaymentTypeChange.bind(this);
     this.handleTotalChange = this.handleTotalChange.bind(this);
     this.handleVariantSelected = this.handleVariantSelected.bind(this);
     this.handleProductRemover = this.handleProductRemover.bind(this);
     this.handleTrackingIdChange = this.handleTrackingIdChange.bind(this);
-    this.handleAdressChange = this.handleAdressChange.bind(this);
+    this.handleAddressChange = this.handleAddressChange.bind(this);
     this.handleNotesChange = this.handleNotesChange.bind(this);
   }
 
@@ -46,7 +47,7 @@ class OrderWrapper extends Component {
     this.setState({notes: event.target.value})
   }
 
-  handleAdressChange(event) {
+  handleAddressChange(event) {
     this.setState({address: event.target.value})
   }
 
@@ -56,6 +57,11 @@ class OrderWrapper extends Component {
 
   handleClientPhoneNumber(event) {
     this.setState({clientPhoneNumber: event.target.value})
+  }
+
+  handleBlurPhoneNumber(event){
+    let clientPhoneNumber = event.target.value.replace(/\s|-/g,'');
+    this.setState({clientPhoneNumber});
   }
 
   handleServiceTypeChange(event) {
@@ -117,11 +123,12 @@ class OrderWrapper extends Component {
             <OrderForm
               handleClientName={this.handleClientName}
               handleClientPhoneNumber={this.handleClientPhoneNumber}
+              handleBlurPhoneNumber={this.handleBlurPhoneNumber}
               handleServiceTypeChange={this.handleServiceTypeChange}
               handlePaymentTypeChange={this.handlePaymentTypeChange}
               handleTotalChange={this.handleTotalChange}
               handleTrackingIdChange={this.handleTrackingIdChange}
-              handleAdressChange={this.handleAdressChange}
+              handleAddressChange={this.handleAddressChange}
               handleNotesChange={this.handleNotesChange}
               address={this.state.address}
               trackingId={this.state.trackingId}

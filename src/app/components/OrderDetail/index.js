@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { FaPrint } from 'react-icons/fa';
 import ReactToPrint from 'react-to-print';
 import { updateOrderStatus } from '../../../services/backSkService';
+import moment from 'moment';
 
 const List = styled.li`
  list-style-type:none;
@@ -40,8 +41,12 @@ class OrderDetail extends Component {
           <Card.Header><TextToPrint>{this.props.client_name}</TextToPrint></Card.Header>
           <Card.Body style={{ maxWidth: "70mm" }}>
             <Card.Text>
+              <List>Fecha: <TextToPrint>{moment(this.props.created_at).format('DD / MM / YYYY')}</TextToPrint></List>
               <List>Servicio: <TextToPrint>{this.props.service_type}</TextToPrint></List>
               <List>Pago: <TextToPrint>{this.props.payment_type}</TextToPrint></List>
+            </Card.Text>
+            <Card.Text>
+              dirección: <TextToPrint>{this.props.address || 'no aplica'} </TextToPrint>
             </Card.Text>
             <br></br>
             <Card.Text>
@@ -70,12 +75,12 @@ class OrderDetail extends Component {
           }} content={() => this.orderRef.current} />
           <button
             type="button"
-            class="btn btn-light"
+            className="btn btn-light"
             onClick={() => { this.handleClick('finish') }}
           >Finalizar</button>
           <button
             type="button"
-            class="btn btn-danger"
+            className="btn btn-danger"
             onClick={() => { this.handleClick('cancel') }}
           >Cancelar</button>
         </ButtonWrapper>
