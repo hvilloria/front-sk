@@ -82,9 +82,6 @@ class OrderList extends Component {
             {order.payment_type}
           </td>
           <td>
-            {order.state}
-          </td>
-          <td>
             {order.products.map((product, i) => {
               return (
                 <li key={i}>{product.name}</li>
@@ -110,7 +107,6 @@ class OrderList extends Component {
                 <th>Nro orden</th>
                 <th>Retiro</th>
                 <th>Pago</th>
-                <th>Estado</th>
                 <th>Productos</th>
                 <th>Fecha</th>
                 <th>Total</th>
