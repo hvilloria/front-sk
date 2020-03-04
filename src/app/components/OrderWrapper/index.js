@@ -38,7 +38,9 @@ class OrderWrapper extends Component {
         this.setState({ categories: response.data })
       }).catch((err) => {
         if (err.response.status === 401) {
+          localStorage.clear();
           this.props.history.push('/login');
+          alert('inicia sesión para completar esta acción');
         }
       })
   }

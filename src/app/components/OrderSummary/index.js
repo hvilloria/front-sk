@@ -74,7 +74,16 @@ class SummaryOrder extends Component {
     })
     .then(() => {
       this.props.history.push('/admin');
-    }).catch((err)=> alert(err))
+    })
+    .catch((err)=> {
+      if (err.response.status === 401){
+        localStorage.clear();
+        this.props.history.push('/login');
+        alert('inicia sesión para completar esta acción');
+      }else{
+        alert(err)
+      }
+    })
   }
 
   serviceType() {
