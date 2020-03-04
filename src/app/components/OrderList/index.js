@@ -29,12 +29,19 @@ class OrderList extends Component {
   }
 
   componentDidMount() {
-    Promise.all([getOrders(), getSells()]).then( values => {
+    Promise.all([getOrders(), getSells()])
+    .then( values => {
       this.setState({
         orders: values[0].data,
         tkAmountSold: values[1].data.tk,
         dlAmountSold: values[1].data.dl
       })
+    }).catch( err => {
+      if (err.response.status === 401) {
+        localStorage.clear();
+        this.props.history.push('/login');
+        alert('inicia sesión para completar esta acción');
+      }
     })
   }
 

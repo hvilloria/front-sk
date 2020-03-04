@@ -20,19 +20,7 @@ class OrderDetail extends Component {
   constructor() {
     super();
     this.orderRef = React.createRef();
-    this.handleClick = this.handleClick.bind(this);
   }
-
-  handleClick(orderStatus) {
-    updateOrderStatus(this.props.id, {
-      status: orderStatus
-    }).then((response) => {
-      this.props.handleOrderState(response.data);
-    }).catch((err) => {
-      alert(err);
-    })
-  }
-
 
   render() {
     return (
@@ -73,16 +61,6 @@ class OrderDetail extends Component {
               <FaPrint />
             </Button>)
           }} content={() => this.orderRef.current} />
-          <button
-            type="button"
-            className="btn btn-light"
-            onClick={() => { this.handleClick('finish') }}
-          >Finalizar</button>
-          <button
-            type="button"
-            className="btn btn-danger"
-            onClick={() => { this.handleClick('cancel') }}
-          >Cancelar</button>
         </ButtonWrapper>
       </div>
     )
