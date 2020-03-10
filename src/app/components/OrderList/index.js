@@ -5,8 +5,6 @@ import styled from 'styled-components';
 import styles from './orderList.module.scss';
 import { withRouter } from "react-router-dom";
 import { getOrders, getSells } from '../../../services/backSkService';
-import EqualizerIcon from '@material-ui/icons/Equalizer';
-import MotorcycleIcon from '@material-ui/icons/Motorcycle';
 
 
 const OrdersTableContainer = styled.div`
@@ -21,8 +19,8 @@ class OrderList extends Component {
       orders: [],
       orderClicked: false,
       orderSelected: null,
-      tkAmountSold: 0,
-      dlAmountSold: 0,
+      onlineAmount: 0,
+      cashAmount: 0,
     }
     this.handleClick = this.handleClick.bind(this);
     this.handleOrderState = this.handleOrderState.bind(this);
@@ -33,8 +31,8 @@ class OrderList extends Component {
     .then( values => {
       this.setState({
         orders: values[0].data,
-        tkAmountSold: values[1].data.tk,
-        dlAmountSold: values[1].data.dl
+        onlineAmount: values[1].data.online,
+        cashAmount: values[1].data.cash,
       })
     }).catch( err => {
       if (err.response.status === 401) {
@@ -99,6 +97,9 @@ class OrderList extends Component {
             {order.created_at}
           </td>
           <td>
+            {order.client_phone_number}
+          </td>
+          <td>
             {order.total}
           </td>
         </tr>
@@ -116,6 +117,7 @@ class OrderList extends Component {
                 <th>Pago</th>
                 <th>Productos</th>
                 <th>Fecha</th>
+                <th>Teléfono</th>
                 <th>Total</th>
               </tr>
             </thead>
@@ -128,17 +130,15 @@ class OrderList extends Component {
         <div className={styles.StatsContainer}>
           <div className={styles.statBox}>
             <div className={styles.statBoxHeader}>
-              <h2 className={styles.statHeaderTitle}>Ventas Take away</h2>
-              <EqualizerIcon className={styles.icon}/>
+              <h2 className={styles.statHeaderTitle}>Ventas Online</h2>
             </div>
-            <p className={styles.statValue}>${this.state.tkAmountSold}</p>
+            <p className={styles.statValue}>${this.state.onlineAmount}</p>
           </div>
           <div className={styles.statBox}>
             <div className={styles.statBoxHeader}>
-              <h2 className={styles.statHeaderTitle}>Ventas Delivery Local</h2>
-              <MotorcycleIcon className={styles.icon}/>
+              <h2 className={styles.statHeaderTitle}>Ventas Efectivo</h2>
             </div>
-            <p className={styles.statValue}>${this.state.dlAmountSold}</p>
+            <p className={styles.statValue}>${this.state.cashAmount}</p>
           </div>
         </div>
       </>

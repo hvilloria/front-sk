@@ -32,6 +32,7 @@ class OrderDetail extends Component {
               <List>Fecha: <TextToPrint>{moment(this.props.created_at).format('DD / MM / YYYY')}</TextToPrint></List>
               <List>Servicio: <TextToPrint>{this.props.service_type}</TextToPrint></List>
               <List>Pago: <TextToPrint>{this.props.payment_type}</TextToPrint></List>
+              <List>telefono: <TextToPrint>{this.props.client_phone_number}</TextToPrint></List>
             </Card.Text>
             <Card.Text>
               dirección: <TextToPrint>{this.props.address || 'no aplica'} </TextToPrint>
