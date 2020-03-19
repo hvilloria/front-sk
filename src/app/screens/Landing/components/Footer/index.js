@@ -12,7 +12,7 @@ class Footer extends Component{
         <div className={styles.whatsappContainer}>
           <img src={whatsappIcon} className={styles.whatsappIcon} alt=''/>
           <h2 className={`${styles.text} ${styles.text__withMargin}`}>
-            Take Away y Delivery 11 7539056
+            Take Away y Delivery +54911 3323 4933
           </h2>
         </div>
         <div className={styles.instagramContainer}>
