@@ -1,0 +1,30 @@
+@import '../../../../assets/shared/utils';
+
+.formBox {
+  height: 90vh;
+  width: 30rem;
+  background-color: white;
+  overflow-y: scroll;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.flexColumn{
+  display: flex;
+  flex-direction: row !important;
+  justify-content: center;
+}
+
+.textField{
+  margin-bottom: 1rem !important;
+}
+
+.variantTitle{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 2rem;
+  hr{
+    width: 100%;
+  }
+}

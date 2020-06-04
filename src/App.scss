@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans|Open+Sans|Lato&display=swap');
+@import "./assets/shared/colors";
 
 * {
   margin: 0;
 }
+
+.backgroundGrey{
+  background-color: $grey;
+}
+

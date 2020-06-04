@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Col, Form } from 'react-bootstrap';
 
-class FormOrder extends Component {
+class OrderForm extends Component {
 
   render() {
     const disableAddress = () => {
@@ -86,4 +86,4 @@ class FormOrder extends Component {
   }
 }
 
-export default FormOrder;
+export default OrderForm;

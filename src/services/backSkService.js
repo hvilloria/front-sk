@@ -34,3 +34,14 @@ export const updateOrderStatus = async (orderId, orderStatus) => {
     headers()
   )
 }
+
+export const createProduct = async (productObject) => {
+  return await axios.post(`${API_URL}/api/products`,
+    {product: productObject},
+    headers()
+  )
+}
+
+export const deleteProduct = async (productId) => {
+  return await axios.delete(`${API_URL}/api/products/${productId}`, headers())
+}
