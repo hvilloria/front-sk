@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from './menuContainer.module.scss';
+import styles from './styles.module.scss';
 import { Dropdown, DropdownButton } from 'react-bootstrap';
 import { getCategories } from '../../../../../services/backSkService';
 
@@ -25,19 +25,19 @@ class DropdownMenu extends Component {
       })
     });
   }
-  
+
   render(){
     let { categories, categorySelected } = this.state;
     return(
       <div className={styles.menuContainer}>
         <h2 className={styles.menuTitle}>Nuestro Menú</h2>
-        <DropdownButton 
+        <DropdownButton
           className={styles.dropdownButton}
-          id="dropdown-basic-button" 
+          id="dropdown-basic-button"
           title={categorySelected.name || 'Selecciona una categoria'}
         >
           { categories.map((category, i)=>{
-            return <Dropdown.Item 
+            return <Dropdown.Item
               onClick={()=> this.handleCategorySelected(category)}
               key={i}
             >{category.name}</Dropdown.Item>
@@ -49,9 +49,12 @@ class DropdownMenu extends Component {
               product.variants.map((variant) => {
                 return(
                   <div key={variant.id} className={styles.itemContainer}>
-                    <h2 className={styles.itemName}>{product.name} {variant.name}</h2>
-                    <div className={styles.separatorLine}></div>
-                    <h2 className={styles.itemPrice}>${variant.price}</h2>
+                    <div className={styles.itemTitleContainer}>
+                      <h2 className={styles.itemName}>{product.name} {variant.name}</h2>
+                      <div className={styles.separatorLine}></div>
+                      <h2 className={styles.itemPrice}>${variant.price}</h2>
+                    </div>
+                    <span className={styles.descriptionText}>{variant.description}</span>
                   </div>
                 )
               })

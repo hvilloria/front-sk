@@ -33,14 +33,14 @@
 .itemName{
   font-family: 'Lato', sans-serif;
   font-weight: bold;
-  font-size: 15px;
+  font-size: 1.1rem;
 }
 
 .itemPrice{
   font-family: 'Lato', sans-serif;
   font-weight: normal;
   color: #ffe0e4;
-  font-size: 12px;
+  font-size: 0.9rem;
 }
 
 .separatorLine{
@@ -51,8 +51,17 @@
   margin-right: 20px;
 }
 
-.itemContainer{
+.itemTitleContainer{
   display: flex;
   flex-direction: row;
   align-items: baseline;
+}
+.itemContainer{
+  margin-bottom: 1.5rem;
+}
+.descriptionText{
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  color: #ededed8f;
+  font-size: 0.9rem;
 }
