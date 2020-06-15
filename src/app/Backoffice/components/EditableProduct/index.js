@@ -11,7 +11,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
-import { deleteProduct } from '../../../../services/backSkService';
+import { inactivateVariant } from '../../../../services/backSkService';
 
 
 const useStyles = makeStyles(theme => ({
@@ -37,7 +37,6 @@ const EditableProduct = (props) => {
   };
 
   const handleClose = () => {
-    handleClickDeleteButton();
     setOpen(false);
   };
 
@@ -46,7 +45,7 @@ const EditableProduct = (props) => {
   };
 
   const handleClickDeleteButton = () => {
-    deleteProduct(product.id).then(()=>{
+    inactivateVariant(variant.id).then(()=>{
       window.location.reload(false);
     })
   }
@@ -93,7 +92,7 @@ const EditableProduct = (props) => {
       >
         <DialogTitle id="alert-dialog-title">{"Desea eliminar este producto?"}</DialogTitle>
         <DialogActions>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={handleClickDeleteButton} color="primary">
             Eliminar
           </Button>
           <Button onClick={handleClose} color="danger" autoFocus className={styles.cancelButton}>

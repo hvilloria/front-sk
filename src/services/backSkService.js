@@ -42,6 +42,6 @@ export const createProduct = async (productObject) => {
   )
 }
 
-export const deleteProduct = async (productId) => {
-  return await axios.delete(`${API_URL}/api/products/${productId}`, headers())
+export const inactivateVariant = async (variantId) => {
+  return await axios.delete(`${API_URL}/api/variants/${variantId}`, headers());
 }

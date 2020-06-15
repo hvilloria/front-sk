@@ -14,7 +14,7 @@ import Button from '@material-ui/core/Button';
 import { createProduct } from '~services/backSkService';
 import { useHistory } from "react-router-dom";
 
-function ProductForm({categories, handleSubmittedForm}, ...rest) {
+function ProductForm({categories, handleSubmittedForm}) {
   let history = useHistory();
   const formik = useFormik({
     initialValues: {
@@ -22,6 +22,18 @@ function ProductForm({categories, handleSubmittedForm}, ...rest) {
       name: '',
       status: 'active',
       variants_attributes: [
+        {
+          price: 0,
+          name: '',
+          base: true,
+          description: ''
+        },
+        {
+          price: 0,
+          name: '',
+          base: true,
+          description: ''
+        },
         {
           price: 0,
           name: '',
@@ -55,10 +67,6 @@ function ProductForm({categories, handleSubmittedForm}, ...rest) {
       })
     },
   });
-  // const handleDisabling = (formikValue) => {
-  //   return formikValue === true ?
-  // }
-  console.log(typeof(formik.values.variants_attributes[0].base))
   return(
     <div className={styles.formBox}>
       <form onSubmit={formik.handleSubmit}>
@@ -103,7 +111,6 @@ function ProductForm({categories, handleSubmittedForm}, ...rest) {
           fullWidth
           onChange={formik.handleChange}
           className={styles.textField}
-          // disabled={() => formik.values.variants_attributes[0].base === "true" ? true : false}
           disabled={typeof(formik.values.variants_attributes[0].base) === 'string' ? formik.values.variants_attributes[0].base === "true" : true}
         />
         <TextField
@@ -203,6 +210,77 @@ function ProductForm({categories, handleSubmittedForm}, ...rest) {
             <FormControlLabel value='false' control={<Radio color="default" name='variants_attributes[2].base' onChange={formik.handleChange}/>} label="Variación"/>
           </RadioGroup>
         </FormControl>
+        <TextField
+          label="Nombre de la Variante"
+          name='variants_attributes[3].name'
+          fullWidth
+          onChange={formik.handleChange}
+          className={styles.textField}
+          disabled={typeof(formik.values.variants_attributes[1].base) === 'string' ? formik.values.variants_attributes[1].base === "true" : true}
+        />
+        <TextField
+          label="Precio"
+          name='variants_attributes[3].price'
+          onChange={formik.handleChange}
+          className={styles.textField}
+          fullWidth
+          InputProps={{
+            startAdornment: <InputAdornment position="start">$</InputAdornment>,
+          }}
+        />
+        <TextField
+          placeholder="Descripción"
+          fullWidth
+          margin="normal"
+          onChange={formik.handleChange}
+          name='variants_attributes[3].description'
+          className={styles.textField}
+          InputLabelProps={{
+            shrink: true,
+          }}
+        />
+        <FormControl component="fieldset" fullWidth className={styles.marginBottom}>
+          <RadioGroup defaultValue='true' aria-label="gender" name="customized-radios" className={styles.flexColumn}>
+            <FormControlLabel value='true' control={<Radio color="default" name='variants_attributes[1].base' onChange={formik.handleChange}/>} label="Base" />
+            <FormControlLabel value='false' control={<Radio color="default" name='variants_attributes[1].base' onChange={formik.handleChange}/>} label="Variación"/>
+          </RadioGroup>
+        </FormControl>
+        <TextField
+          label="Nombre de la Variante"
+          name='variants_attributes[4].name'
+          fullWidth
+          onChange={formik.handleChange}
+          className={styles.textField}
+          disabled={typeof(formik.values.variants_attributes[1].base) === 'string' ? formik.values.variants_attributes[1].base === "true" : true}
+        />
+        <TextField
+          label="Precio"
+          name='variants_attributes[4].price'
+          onChange={formik.handleChange}
+          className={styles.textField}
+          fullWidth
+          InputProps={{
+            startAdornment: <InputAdornment position="start">$</InputAdornment>,
+          }}
+        />
+        <TextField
+          placeholder="Descripción"
+          fullWidth
+          margin="normal"
+          onChange={formik.handleChange}
+          name='variants_attributes[4].description'
+          className={styles.textField}
+          InputLabelProps={{
+            shrink: true,
+          }}
+        />
+        <FormControl component="fieldset" fullWidth className={styles.marginBottom}>
+          <RadioGroup defaultValue='true' aria-label="gender" name="customized-radios" className={styles.flexColumn}>
+            <FormControlLabel value='true' control={<Radio color="default" name='variants_attributes[1].base' onChange={formik.handleChange}/>} label="Base" />
+            <FormControlLabel value='false' control={<Radio color="default" name='variants_attributes[1].base' onChange={formik.handleChange}/>} label="Variación"/>
+          </RadioGroup>
+        </FormControl>
+
         <Button
           fullWidth
           variant="contained"
