@@ -1,0 +1,15 @@
+@import "../../../../assets/shared/colors";
+@import '../../../../assets/shared/utils';
+
+.margin_top{
+  margin-top: 1rem;
+}
+
+.homeContainer{
+  background-color: $grey;
+  height: 100vh;
+}
+
+.paddingX{
+  padding: 0 1rem;
+}

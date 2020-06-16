@@ -1,0 +1,39 @@
+@import '../../../../assets/shared/utils';
+.ul{
+  width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.li{
+  padding: 1rem 0;
+  text-align: center;
+
+  &:hover{
+    background-color: rgba(38, 50, 56, 0.08);
+  }
+}
+// de aqui para arriba verificar lo que no se usa para borrarlo
+.sidebar {
+  @include box-shadow-grey;
+  height: 91vh;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  background-color: white;
+  border-right: 1px solid rgba(152, 152, 152, 0.16);
+}
+
+.adminButton{
+  width: 100%;
+  &:focus {
+    outline: none;
+  }
+}
+.separator{
+  color: #EEEEEE;
+  background-color: #EEEEEE;
+  height: 0rem;
+  width: 100%;
+}

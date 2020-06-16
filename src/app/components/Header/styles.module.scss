@@ -1,0 +1,17 @@
+@import '../../../assets/shared/utils';
+
+.clickableButton{
+  cursor: pointer;
+}
+
+.appbar{
+  display: flex;
+  flex-direction: row !important;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logoutIcon{
+  margin: 0 1rem;
+  cursor: pointer;
+}

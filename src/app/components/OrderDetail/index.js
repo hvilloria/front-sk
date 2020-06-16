@@ -3,7 +3,6 @@ import { Card, Button } from 'react-bootstrap';
 import styled from 'styled-components';
 import { FaPrint } from 'react-icons/fa';
 import ReactToPrint from 'react-to-print';
-import { updateOrderStatus } from '../../../services/backSkService';
 import moment from 'moment';
 
 const List = styled.li`
@@ -23,8 +22,9 @@ class OrderDetail extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
-      <div style={{ width: '25rem', margin: '0 1em 0' }}>
+      <div style={{ width: '25rem', margin: '10% auto' }}>
         <Card ref={this.orderRef}>
           <Card.Header><TextToPrint>{this.props.client_name}</TextToPrint></Card.Header>
           <Card.Body style={{ maxWidth: "70mm" }}>

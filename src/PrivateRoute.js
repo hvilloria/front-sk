@@ -9,7 +9,7 @@ function PrivateRoute({ component: Component, ...rest }) {
 
   const isAuthenticated = () => {
     const storageContent = JSON.parse(localStorage.getItem('user'));
-    return authentication.authTokens || storageContent ? true : false; 
+    return authentication.authTokens || storageContent ? true : false;
   }
 
   return (

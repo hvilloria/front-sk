@@ -48,7 +48,12 @@ class SummaryOrder extends Component {
   }
 
   submitOrder() {
-    const variant_ids = this.props.products.map((product)=> product.variant.id)
+    const order_details_attributes = this.props.products.map((product)=> {
+      return {
+        variant_id: product.variant.id,
+        price: product.variant.price
+      }
+    })
     const {
       clientName,
       clientPhoneNumber,
@@ -67,7 +72,7 @@ class SummaryOrder extends Component {
         payment_type: paymentType,
         address: address,
         tracking_id: trackingId,
-        variant_ids,
+        order_details_attributes,
         notes,
         total: total.toFixed(2)
       }

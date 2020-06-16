@@ -1,0 +1,17 @@
+@mixin box-shadow-grey {
+  box-shadow: 1px 1px 8px 0px rgba(199,199,199,1);
+}
+
+.marginBottom {
+  margin-bottom: 1rem !important;
+}
+
+.fixedBottom{
+  position: fixed !important;
+  bottom: 5rem;
+  right: 5rem;
+}
+
+.buttonColor{
+  color: #8e0000;
+}

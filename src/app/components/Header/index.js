@@ -1,67 +1,51 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
-import { Navbar, Nav } from 'react-bootstrap';
-import { Link, withRouter } from "react-router-dom";
+import React from 'react';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import {  withRouter, useHistory } from "react-router-dom";
 import { logOut } from '../../../services/authService';
-import { DEFAULT_DISPLAY_NAME } from './constants';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import styles from './styles.module.scss'
 
-const Title = styled.h1`
-  font-family: 'Raleway',sans-serif;
-  font-weight: 600;
-  color: #707070;
-  font-size: 25px;
-  line-height: 80px;
-  margin-right: 50%;
-`;
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#8e0000'
+    },
+  },
+  status: {
+    danger: 'orange',
+  },
+});
 
-const UserMenu = styled.h5`
-  font-family: Lato;
-  font-weight: normal;
-  font-size: 15px;
-  line-height: 82px;
-  cursor: pointer;
-`;
+function Header (){
+  let history = useHistory();
+  const handleTitleCLick = () => {
+    history.push("/admin");
+  }
 
-const HeaderWrapper = styled.header`
-  display: flex;
-  background-color: #fafafa;
-  justify-content: space-around;
-  height: 80px;
-  box-shadow: 0 1.5px 3px 0 rgba(0, 0, 0, 0.16);
-`;
-
-class Header extends Component {
-
-  handleCLick = () => {
+  const handleIconClick = () => {
     const user = JSON.parse(localStorage.getItem("user"));
     if (user.uid) {
-      logOut(user).then(() => {
-        this.props.history.push('/login')
+      logOut(user).then(()=>{
+        history.push("/login");
       })
     }
   }
 
-  render() {
-    const user = JSON.parse(localStorage.getItem("user"));
-    const uid = user && user.uid;
-    const displayName = uid || DEFAULT_DISPLAY_NAME;
-
-    return (
-      <HeaderWrapper>
-        <Title><Link to="/admin" style={{ textDecoration: 'none', color: '#707070' }}>Shirokuro</Link></Title>
-        <Navbar bg="light" expand="lg">
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mr-auto">
-              <Nav.Link><Link to="/admin/orders" style={{ textDecoration: 'none', color: '#707070' }}>Crear Comanda</Link></Nav.Link>
-              <Nav.Link><Link to="/admin/products" style={{ textDecoration: 'none', color: '#707070' }}>Productos</Link></Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Navbar>
-        <UserMenu onClick={this.handleCLick}>{displayName}</UserMenu>
-      </HeaderWrapper>
-    )
-  }
+  return (
+    <ThemeProvider theme={theme}>
+      <AppBar position="static" className={`${styles.marginBottom} ${styles.appbar}`}>
+        <Toolbar variant="dense">
+          <Typography variant="h6" onClick={handleTitleCLick} className={styles.clickableButton}>
+            Shirokuro
+          </Typography>
+        </Toolbar>
+          <ExitToAppIcon className={styles.logoutIcon} onClick={handleIconClick}/>
+      </AppBar>
+    </ThemeProvider>
+  )
 }
 
 export default withRouter(Header);
