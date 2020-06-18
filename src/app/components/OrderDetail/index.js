@@ -24,10 +24,10 @@ class OrderDetail extends Component {
   render() {
     console.log(this.props);
     return (
-      <div style={{ width: '25rem', margin: '10% auto' }}>
-        <Card ref={this.orderRef}>
+      <div style={{ width: '25rem', margin: '6% auto' }}>
+        <Card ref={this.orderRef} style={{height: '70vh'}}>
           <Card.Header><TextToPrint>{this.props.client_name}</TextToPrint></Card.Header>
-          <Card.Body style={{ maxWidth: "70mm" }}>
+          <Card.Body style={{overflow: 'scroll' }}>
             <Card.Text>
               <List>Fecha: <TextToPrint>{moment(this.props.created_at).format('DD / MM / YYYY')}</TextToPrint></List>
               <List>Servicio: <TextToPrint>{this.props.service_type}</TextToPrint></List>
