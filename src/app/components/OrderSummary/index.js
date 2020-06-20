@@ -3,6 +3,8 @@ import { RemovableProduct } from '~components/';
 import { withRouter } from "react-router-dom";
 import { Card, Button, Modal } from 'react-bootstrap';
 import { createOrder } from '../../../services/backSkService';
+import Checkbox from '@material-ui/core/Checkbox';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 class SummaryOrder extends Component {
   constructor(props) {
@@ -10,7 +12,8 @@ class SummaryOrder extends Component {
     this.state = {
       showModal: false,
       exchange: 0,
-      products: this.props.products
+      products: this.props.products,
+      distance: false,
     }
     this.handleClickModal = this.handleClickModal.bind(this);
     this.ProductSummaryList = this.ProductSummaryList.bind(this);
@@ -18,7 +21,7 @@ class SummaryOrder extends Component {
     this.paymentType = this.paymentType.bind(this);
     this.submitOrder = this.submitOrder.bind(this);
     this.handleChange = this.handleChange.bind(this);
-
+    this.handleChangeDistance = this.handleChangeDistance.bind(this);
   }
 
   ProductSummaryList() {
@@ -45,6 +48,10 @@ class SummaryOrder extends Component {
 
   handleClickModal() {
     this.setState((state)=>({showModal: !state.showModal}))
+  }
+
+  handleChangeDistance(){
+    this.setState({distance: !this.state.distance})
   }
 
   submitOrder() {
@@ -75,7 +82,8 @@ class SummaryOrder extends Component {
         order_details_attributes,
         notes,
         total: total.toFixed(2)
-      }
+      },
+      distance:this.state.distance
     })
     .then(() => {
       this.props.history.push('/admin');
@@ -130,9 +138,20 @@ class SummaryOrder extends Component {
           <Card.Text>
             Productos: { this.ProductSummaryList() }
           </Card.Text>
+          <Card.Text>
+          <FormControlLabel
+            control={<Checkbox
+                        checked={this.distance}
+                        onChange={this.handleChangeDistance} name="3km"
+                        color="primary"
+                      />
+                    }
+            label="3km - $100"
+          />
+          </Card.Text>
           <hr />
           <Card.Text>
-            Total: {this.props.total.toFixed(2)}
+            Total: {this.props.total.toFixed(2)} (No está incluido el costo de envío)
           </Card.Text>
           <Card.Text>
             Paga Con:
