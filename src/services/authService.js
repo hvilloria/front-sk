@@ -7,6 +7,6 @@ export const login = async authData => {
 
 
 export const logOut = async authData => {
-  await axios.delete(`${API_URL}/auth/sign_out`, { headers: authData });
   localStorage.clear();
+  await axios.delete(`${API_URL}/auth/sign_out`, { headers: authData });
 };
