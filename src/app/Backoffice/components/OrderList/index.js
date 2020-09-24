@@ -10,7 +10,7 @@ import { getOrders } from '../../../../services/backSkService';
 import styles from './styles.module.scss';
 import { OrderDetail } from '~components';
 import Modal from '@material-ui/core/Modal';
-
+import {  withRouter, useHistory } from "react-router-dom";
 
 function OrderList() {
   const [orders, setOrders] = useState([]);
@@ -20,9 +20,17 @@ function OrderList() {
   const handleClose = () => {
     setOpen(false);
   };
+  let history = useHistory();
 
   useEffect(()=>{
-    getOrders().then((orders)=>{ setOrders(orders.data)})
+    getOrders()
+      .then((orders)=>{ setOrders(orders.data)})
+      .catch((err)=>{
+        if (err.response.status === 401) {
+          localStorage.clear();
+          history.push("/login");
+        }
+      })
   }, [])
 
   const handleClick = (order)=>{
@@ -78,4 +86,4 @@ function OrderList() {
   );
 }
 
-export default OrderList;
+export default withRouter(OrderList);

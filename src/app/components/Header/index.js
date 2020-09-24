@@ -30,6 +30,8 @@ function Header (){
     if (user.uid) {
       logOut(user).then(()=>{
         history.push("/login");
+      }).catch(()=>{
+        history.push("/login");
       })
     }
   }
